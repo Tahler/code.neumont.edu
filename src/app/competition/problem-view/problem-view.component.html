@@ -1,5 +1,5 @@
 <div *ngIf="problem">
-  <h2><i *ngIf="solved" fa [name]="'check'" class="green"></i> {{problem.name}}</h2>
+  <h2><i *ngIf="solved" class="green fa fa-check"></i> {{problem.name}}</h2>
   <div class="problem-description markdown-body" [innerHTML]="problem.description | markdown"></div>
 
   <div *ngIf="endedAlready === false">

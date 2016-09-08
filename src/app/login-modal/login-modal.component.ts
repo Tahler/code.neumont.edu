@@ -14,8 +14,7 @@ import { AuthService } from '../shared';
     FORM_DIRECTIVES,
     REACTIVE_FORM_DIRECTIVES,
     ROUTER_DIRECTIVES,
-    MODAL_DIRECTIVES,
-    FaDirective
+    MODAL_DIRECTIVES
   ],
   viewProviders: [BS_VIEW_PROVIDERS]
 })

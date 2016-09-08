@@ -27,12 +27,6 @@ module.exports = function(defaults) {
       // ng2-bootstrap
       'ng2-bootstrap/**/*.js',
       'moment/moment.js',
-      // angular2-fontawesome
-      'angular2-fontawesome/*.+(js|js.map)',
-      'angular2-fontawesome/**/*.+(js|js.map)',
-      'angular2-fontawesome/**/**/*.+(js|js.map)',
-      'font-awesome/css/*.*',
-      'font-awesome/fonts/*.*',
       // Showdown
       'showdown/dist/*.js',
       // CodeMirror

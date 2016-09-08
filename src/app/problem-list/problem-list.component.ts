@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import { FaDirective } from 'angular2-fontawesome/directives';
+
 import { ProblemPreviewComponent } from './problem-preview';
 import { AuthService, ContainsPipe, Problem, RepositoryService } from '../shared';
 
@@ -11,7 +11,6 @@ import { AuthService, ContainsPipe, Problem, RepositoryService } from '../shared
   styleUrls: ['problem-list.component.css'],
   directives: [
     ROUTER_DIRECTIVES,
-    FaDirective,
     ProblemPreviewComponent
   ],
   pipes: [ContainsPipe]

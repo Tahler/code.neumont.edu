@@ -1,14 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  FORM_DIRECTIVES,
-  REACTIVE_FORM_DIRECTIVES,
-  FormGroup,
-  FormControl,
-  Validators
-} from '@angular/forms';
-import { BS_VIEW_PROVIDERS, MODAL_DIRECTIVES, ModalDirective } from 'ng2-bootstrap/ng2-bootstrap';
-import { FaDirective } from 'angular2-fontawesome/directives';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+import { ModalDirective } from 'ng2-bootstrap';
+
 import { emailValidator, matchingPasswordValidator } from './validators';
 import { AuthService, User } from '../shared';
 
@@ -16,15 +11,7 @@ import { AuthService, User } from '../shared';
   moduleId: module.id,
   selector: 'app-register',
   templateUrl: 'register.component.html',
-  styleUrls: ['register.component.css'],
-  directives: [
-    FORM_DIRECTIVES,
-    REACTIVE_FORM_DIRECTIVES,
-    MODAL_DIRECTIVES,
-    ModalDirective,
-    FaDirective
-  ],
-  viewProviders: [BS_VIEW_PROVIDERS]
+  styleUrls: ['register.component.css']
 })
 export class RegisterComponent implements OnInit {
   nameControl = new FormControl('', Validators.required);

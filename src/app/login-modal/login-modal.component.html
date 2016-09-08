@@ -13,11 +13,11 @@
           <form role="form" [formGroup]="loginForm" (ngSubmit)="logInWithEmailPassword()">
             <div class="form-group">
               <div class="input-group email-group">
-                <span class="input-group-addon"><i fa [name]="'envelope'" [fw]=true></i></span>
+                <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
                 <input type="email" class="form-control input-lg" name="email" placeholder="Email" formControlName="email" [(ngModel)]="email">
               </div>
               <div class="input-group password-group">
-                <span class="input-group-addon"><i fa [name]="'lock'" [fw]=true></i></span>
+                <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
                 <input type="password" class="form-control input-lg" name="password" placeholder="Password" formControlName="password" [(ngModel)]="password">
               </div>
             </div>

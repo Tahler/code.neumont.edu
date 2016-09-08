@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
+
 import { Subscription } from 'rxjs/Subscription';
-import { FaDirective } from 'angular2-fontawesome/directives';
+
 import {
   AuthService,
   LangPipe,
@@ -18,10 +19,7 @@ import { SharingService } from '../shared';
   selector: 'app-my-submissions',
   templateUrl: 'my-submissions.component.html',
   styleUrls: ['my-submissions.component.css'],
-  directives: [
-    ROUTER_DIRECTIVES,
-    FaDirective
-  ],
+  directives: [ROUTER_DIRECTIVES],
   pipes: [
     LangPipe,
     PrecisionPipe,

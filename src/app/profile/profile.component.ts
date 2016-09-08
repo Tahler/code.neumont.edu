@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ROUTER_DIRECTIVES } from '@angular/router';
-import { FaDirective } from 'angular2-fontawesome/directives';
+
 import { AuthService, RepositoryService, User } from '../shared';
 
 @Component({
@@ -8,10 +8,7 @@ import { AuthService, RepositoryService, User } from '../shared';
   selector: 'app-profile',
   templateUrl: 'profile.component.html',
   styleUrls: ['profile.component.css'],
-  directives: [
-    ROUTER_DIRECTIVES,
-    FaDirective
-  ]
+  directives: [ROUTER_DIRECTIVES]
 })
 export class ProfileComponent implements OnInit {
   myUid: string;

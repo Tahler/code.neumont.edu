@@ -13,7 +13,7 @@
     <div *ngIf="testCases">
       <div id="test-cases">
         <div *ngFor="let testCase of testCases; let i = index" class="test-case">
-          <button type="button" *ngIf="testCases.length > 1" (click)="removeTestCase(i)" class="btn btn-xs btn-danger"><i fa [name]="'minus'"></i></button>
+          <button type="button" *ngIf="testCases.length > 1" (click)="removeTestCase(i)" class="btn btn-xs btn-danger"><i class="fa fa-minus"></i></button>
           <label>Test Case {{i+1}}</label>
           <!-- TODO: no two inputs can be the same -->
           <div class="form-group">
@@ -24,7 +24,7 @@
               </div>
 
               <!-- TODO: arrow -->
-              <!--<i fa [name]="'arrow-right'"></i>-->
+              <!--<i class="fa fa-arrow-right"></i>-->
 
               <div class="col-sm-6">
                 <textarea name="output{{i}}" [(ngModel)]="testCase.output" placeholder="Output" rows="1" class="output form-control" required></textarea>

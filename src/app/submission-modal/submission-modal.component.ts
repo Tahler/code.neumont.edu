@@ -1,12 +1,8 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, ViewChild } from '@angular/core';
+
 import { Subscription } from 'rxjs';
-import {
-  BS_VIEW_PROVIDERS,
-  MODAL_DIRECTIVES,
-  ModalDirective,
-  ModalOptions
-} from 'ng2-bootstrap/ng2-bootstrap';
-import { FaDirective } from 'angular2-fontawesome/directives';
+import { ModalDirective, ModalOptions } from 'ng2-bootstrap/ng2-bootstrap';
+
 import {
   AuthService,
   AnsiToHtmlPipe,
@@ -27,10 +23,6 @@ const ConfigPreventCloseOnClickOutside: ModalOptions = { backdrop: 'static' };
     // TODO:
     // '/vendor/font-awesome/css/font-awesome.css'
   ],
-  directives: [
-    MODAL_DIRECTIVES,
-    FaDirective
-  ],
   pipes: [
     AnsiToHtmlPipe,
     PrecisionPipe
@@ -38,10 +30,9 @@ const ConfigPreventCloseOnClickOutside: ModalOptions = { backdrop: 'static' };
   providers: [
     AuthService,
     SubmissionService
-  ],
-  viewProviders: [BS_VIEW_PROVIDERS]
+  ]
 })
-export class SubmissionModalComponent implements OnInit, OnDestroy {
+export class SubmissionModalComponent implements OnDestroy {
   @Input() problemId: string;
 
   @ViewChild('modal') modal: ModalDirective;
@@ -54,9 +45,6 @@ export class SubmissionModalComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private submissionService: SubmissionService) { }
-
-  ngOnInit() {
-  }
 
   ngOnDestroy() {
     this.killSubscription();

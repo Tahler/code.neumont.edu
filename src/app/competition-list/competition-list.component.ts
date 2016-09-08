@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import { FaDirective } from 'angular2-fontawesome/directives';
+
 import { CompetitionPreviewComponent } from './competition-preview';
 import { IncludePastCompetitionsPipe } from './include-past-competitions.pipe';
 import { AuthService, RepositoryService, Competition } from '../shared';
@@ -12,7 +12,6 @@ import { AuthService, RepositoryService, Competition } from '../shared';
   styleUrls: ['competition-list.component.css'],
   directives: [
     ROUTER_DIRECTIVES,
-    FaDirective,
     CompetitionPreviewComponent
   ],
   pipes: [IncludePastCompetitionsPipe]

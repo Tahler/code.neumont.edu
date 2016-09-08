@@ -3,7 +3,7 @@
     {{problemName}}
   </div>
   <div class="pull-right">
-    <span *ngIf="!solved && numIncorrect">{{numIncorrect}} <i fa [name]="'times-circle'" class="red"></i></span>
-    <span *ngIf="solved"><i fa [name]="'check'" class="green"></i></span>
+    <span *ngIf="!solved && numIncorrect">{{numIncorrect}} <i class="red fa fa-times-circle"></i></span>
+    <span *ngIf="solved"><i class="green fa fa-check"></i></span>
   </div>
 </div>

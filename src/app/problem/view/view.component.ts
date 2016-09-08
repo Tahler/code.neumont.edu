@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ROUTER_DIRECTIVES, Router } from '@angular/router';
+
 import { Observable, Subscription } from 'rxjs/Rx';
-import { FaDirective } from 'angular2-fontawesome/directives';
+
 import { CodeEditorComponent } from '../../code-editor';
 import { SubmissionModalComponent } from '../../submission-modal';
 import {
@@ -21,7 +22,6 @@ import { SharingService } from '../shared';
   styleUrls: ['view.component.css'],
   directives: [
     ROUTER_DIRECTIVES,
-    FaDirective,
     CodeEditorComponent,
     SubmissionModalComponent
   ],

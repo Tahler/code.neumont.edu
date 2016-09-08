@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
-import { FaDirective } from 'angular2-fontawesome/directives';
+
 import { Problem, TestCase } from '../shared';
 
 @Component({
@@ -11,19 +11,13 @@ import { Problem, TestCase } from '../shared';
   directives: [
     FORM_DIRECTIVES,
     REACTIVE_FORM_DIRECTIVES,
-    FaDirective
   ]
 })
-export class EditProblemFormComponent implements OnInit {
+export class EditProblemFormComponent {
   @Input() problem: Problem;
   @Input() testCases: TestCase[];
 
   @Output() finish = new EventEmitter();
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   addTestCase(): void {
     this.testCases.push(new TestCase());

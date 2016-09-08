@@ -1,22 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { FaDirective } from 'angular2-fontawesome/directives';
+import { Component } from '@angular/core';
+
 import { AuthService } from '../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-reset-password',
   templateUrl: 'reset-password.component.html',
-  styleUrls: ['reset-password.component.css'],
-  directives: [FaDirective]
+  styleUrls: ['reset-password.component.css']
 })
-export class ResetPasswordComponent implements OnInit {
+export class ResetPasswordComponent {
   email = '';
   state = 'Input';
 
   constructor(private authService: AuthService) { }
-
-  ngOnInit() {
-  }
 
   sendPasswordReset() {
     // this.state = 'Sending';
