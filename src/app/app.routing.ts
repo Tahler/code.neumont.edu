@@ -5,8 +5,13 @@ const homeRoutes: Routes = [
   { path: '', loadChildren: 'app/home/home.module#HomeModule' }
 ];
 
+const registerRoutes: Routes = [
+  { path: 'register', loadChildren: 'app/register/register.module#RegisterModule' }
+];
+
 const appRoutes: Routes = [
-  ...homeRoutes
+  ...homeRoutes,
+  ...registerRoutes
 ];
 
 export const appRoutingProviders: any[] = [];
