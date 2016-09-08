@@ -1,23 +1,16 @@
 import 'jquery';
 import 'bootstrap';
 
-import { Component, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
-import { NavbarComponent } from './navbar';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+
 import { LoginModalComponent } from './login-modal';
-import { AuthService, LoginModalService } from './shared';
+import { AuthService, LoginModalService, RepositoryService } from './shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.css'],
-  directives: [
-    ROUTER_DIRECTIVES,
-    NavbarComponent,
-    LoginModalComponent
-  ],
-  providers: [LoginModalService]
+  styleUrls: ['app.component.css']
 })
 export class AppComponent implements OnInit {
   @ViewChild('loginModal') loginModal: LoginModalComponent;
@@ -26,10 +19,11 @@ export class AppComponent implements OnInit {
       // viewContainerRef is needed for angular2-bootstrap modals
       private viewContainerRef: ViewContainerRef,
       private authService: AuthService,
+      private repoService: RepositoryService,
       private loginModalService: LoginModalService) { }
 
   ngOnInit() {
-    this.loginModalService.shows.subscribe(
-        () => this.loginModal.show());
+    this.loginModalService.shows
+        .subscribe(() => this.loginModal.show());
   }
 }
