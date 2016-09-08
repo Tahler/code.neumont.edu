@@ -2,11 +2,9 @@
   "name": "capstone-web",
   "version": "0.0.0",
   "license": "MIT",
-  "angular-cli": {},
   "scripts": {
     "start": "ng serve",
-    "postinstall": "typings install",
-    "lint": "tslint \"src/**/*.ts\""
+    "postinstall": "typings install"
   },
   "private": true,
   "dependencies": {
@@ -37,7 +35,6 @@
     "codelyzer": "0.0.20",
     "ember-cli-inject-live-reload": "1.4.0",
     "ts-node": "0.5.5",
-    "tslint": "3.11.0",
     "typescript": "^2.1.0-dev.20160806",
     "typings": "1.3.1"
   }
