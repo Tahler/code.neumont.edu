@@ -1,2 +1,2 @@
 export * from './problem.component';
-export * from './problem.routes';
+export * from './problem.module';

@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ROUTER_DIRECTIVES, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { Observable, Subscription } from 'rxjs/Rx';
 
-import { CodeEditorComponent } from '../../code-editor';
-import { SubmissionModalComponent } from '../../submission-modal';
+import { CodeEditorComponent } from '../../../code-editor';
+import { SubmissionModalComponent } from '../../../submission-modal';
 import {
   AuthService,
   MarkdownPipe,
@@ -12,7 +12,7 @@ import {
   RepositoryService,
   Submission,
   User
-} from '../../shared';
+} from '../../../shared';
 import { SharingService } from '../shared';
 
 @Component({
@@ -21,7 +21,6 @@ import { SharingService } from '../shared';
   templateUrl: 'view.component.html',
   styleUrls: ['view.component.css'],
   directives: [
-    ROUTER_DIRECTIVES,
     CodeEditorComponent,
     SubmissionModalComponent
   ],

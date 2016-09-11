@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ROUTER_DIRECTIVES, Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { RepositoryService, Submission, SubmissionTemplateService } from '../shared';
+import { RepositoryService, Submission, SubmissionTemplateService } from '../../shared';
 import { SharingService } from './shared';
 
 @Component({
@@ -9,10 +9,8 @@ import { SharingService } from './shared';
   selector: 'app-problem',
   templateUrl: 'problem.component.html',
   styleUrls: ['problem.component.css'],
-  directives: [ROUTER_DIRECTIVES],
   providers: [
-    SubmissionTemplateService,
-    SharingService
+    SubmissionTemplateService
   ]
 })
 export class ProblemComponent implements OnInit, OnDestroy {

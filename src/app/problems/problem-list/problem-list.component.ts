@@ -2,17 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { ProblemPreviewComponent } from './problem-preview';
-import { AuthService, ContainsPipe, Problem, RepositoryService } from '../shared';
+import { AuthService, ContainsPipe, Problem, RepositoryService } from '../../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-problem-list',
   templateUrl: 'problem-list.component.html',
   styleUrls: ['problem-list.component.css'],
-  directives: [
-    ROUTER_DIRECTIVES,
-    ProblemPreviewComponent
-  ],
+  directives: [ProblemPreviewComponent],
   pipes: [ContainsPipe]
 })
 export class ProblemListComponent implements OnInit {

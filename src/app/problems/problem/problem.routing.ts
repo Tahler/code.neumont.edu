@@ -1,12 +1,14 @@
-import { RouterConfig } from '@angular/router';
-import { ProblemComponent } from './';
+import { ModuleWithProviders } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+import { ProblemComponent } from './problem.component';
 import { ViewComponent } from './view';
 import { MySubmissionsComponent } from './my-submissions';
 import { LeaderboardComponent } from './leaderboard';
 
-export const ProblemRoutes: RouterConfig = [
+const problemRoutes: Routes = [
   {
-    path: 'problems/:id',
+    path: '',
     component: ProblemComponent,
     children: [
       { path: '', component: ViewComponent },
@@ -15,3 +17,5 @@ export const ProblemRoutes: RouterConfig = [
     ]
   }
 ];
+
+export const problemRouting: ModuleWithProviders = RouterModule.forChild(problemRoutes);

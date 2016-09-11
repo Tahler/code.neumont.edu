@@ -1,13 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
-import { Problem } from '../../shared';
+
+import { Problem } from '../../../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-problem-preview',
   templateUrl: 'problem-preview.component.html',
-  styleUrls: ['problem-preview.component.css'],
-  directives: [ROUTER_DIRECTIVES]
+  styleUrls: ['problem-preview.component.css']
 })
 export class ProblemPreviewComponent {
   @Input() problem: Problem;

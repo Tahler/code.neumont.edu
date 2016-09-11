@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
 
@@ -11,7 +10,7 @@ import {
   PrecisionPipe,
   RepositoryService,
   SpacifyPipe
-} from '../../shared';
+} from '../../../shared';
 import { SharingService } from '../shared';
 
 @Component({
@@ -19,7 +18,6 @@ import { SharingService } from '../shared';
   selector: 'app-my-submissions',
   templateUrl: 'my-submissions.component.html',
   styleUrls: ['my-submissions.component.css'],
-  directives: [ROUTER_DIRECTIVES],
   pipes: [
     LangPipe,
     PrecisionPipe,

@@ -9,9 +9,18 @@ const registerRoutes: Routes = [
   { path: 'register', loadChildren: 'app/register/register.module#RegisterModule' }
 ];
 
+const problemsRoutes: Routes = [
+  {
+    path: 'problems',
+    loadChildren: 'app/problems/problem-list/problem-list.module#ProblemListModule'
+  },
+  { path: 'problems/:id', loadChildren: 'app/problems/problem/problem.module#ProblemModule' }
+];
+
 const appRoutes: Routes = [
   ...homeRoutes,
-  ...registerRoutes
+  ...registerRoutes,
+  ...problemsRoutes
 ];
 
 export const appRoutingProviders: any[] = [];

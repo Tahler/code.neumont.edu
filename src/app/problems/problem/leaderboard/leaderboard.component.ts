@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
-import { AuthService, RepositoryService, SuccessfulSubmission } from '../../shared';
+import { AuthService, RepositoryService, SuccessfulSubmission } from '../../../shared';
 import { SharingService } from '../shared';
 import { RankingComponent } from './ranking';
 
@@ -9,10 +8,7 @@ import { RankingComponent } from './ranking';
   selector: 'app-leaderboard',
   templateUrl: 'leaderboard.component.html',
   styleUrls: ['leaderboard.component.css'],
-  directives: [
-    ROUTER_DIRECTIVES,
-    RankingComponent
-  ]
+  directives: [RankingComponent]
 })
 export class LeaderboardComponent implements OnInit {
   topSubmissions: SuccessfulSubmission[];
