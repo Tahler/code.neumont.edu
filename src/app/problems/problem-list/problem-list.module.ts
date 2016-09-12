@@ -16,8 +16,6 @@ import { ProblemPreviewComponent } from './problem-preview';
     ProblemListComponent,
     ProblemPreviewComponent
   ],
-  exports: [
-    ProblemListComponent
-  ]
+  exports: [ProblemListComponent]
 })
 export class ProblemListModule { }
