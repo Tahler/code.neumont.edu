@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   @ViewChild('loginModal') loginModal: LoginModalComponent;
 
   constructor(
-      // viewContainerRef is needed for angular2-bootstrap modals
+      // viewContainerRef is needed for ng2-bootstrap modals
       private viewContainerRef: ViewContainerRef,
       private authService: AuthService,
       private repoService: RepositoryService,
