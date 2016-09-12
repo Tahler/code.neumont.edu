@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { routing, appRoutingProviders } from './app.routing';
 import { LoginModalModule } from './login-modal';
 import { NavbarModule } from './navbar';
+import { PageNotFoundModule } from './page-not-found';
 import { AuthService, LoginModalService, RepositoryService } from './shared';
 
 export const firebaseConfig = {
@@ -27,7 +28,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
 
     NavbarModule,
-    LoginModalModule
+    LoginModalModule,
+    PageNotFoundModule
   ],
   declarations: [AppComponent],
   providers: [

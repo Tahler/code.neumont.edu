@@ -1,6 +1,8 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { PageNotFoundComponent } from './page-not-found';
+
 const problemsRoutes: Routes = [
   {
     path: 'problems',
@@ -12,7 +14,8 @@ const problemsRoutes: Routes = [
 const appRoutes: Routes = [
   { path: '', loadChildren: 'app/home/home.module#HomeModule' },
   { path: 'register', loadChildren: 'app/register/register.module#RegisterModule' },
-  ...problemsRoutes
+  ...problemsRoutes,
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 export const appRoutingProviders: any[] = [];
