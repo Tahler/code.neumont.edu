@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, RepositoryService, SuccessfulSubmission } from '../../../shared';
+
 import { SharingService } from '../shared';
-import { RankingComponent } from './ranking';
+import { AuthService, RepositoryService, SuccessfulSubmission } from '../../../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-leaderboard',
   templateUrl: 'leaderboard.component.html',
-  styleUrls: ['leaderboard.component.css'],
-  directives: [RankingComponent]
+  styleUrls: ['leaderboard.component.css']
 })
 export class LeaderboardComponent implements OnInit {
   topSubmissions: SuccessfulSubmission[];

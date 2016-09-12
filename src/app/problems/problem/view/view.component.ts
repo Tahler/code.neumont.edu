@@ -5,14 +5,7 @@ import { Observable, Subscription } from 'rxjs/Rx';
 
 import { CodeEditorComponent } from '../../../code-editor';
 import { SubmissionModalComponent } from '../../../submission-modal';
-import {
-  AuthService,
-  MarkdownPipe,
-  Problem,
-  RepositoryService,
-  Submission,
-  User
-} from '../../../shared';
+import { AuthService, Problem, RepositoryService, Submission, User } from '../../../shared';
 import { SharingService } from '../shared';
 
 @Component({
@@ -20,11 +13,7 @@ import { SharingService } from '../shared';
   selector: 'app-view',
   templateUrl: 'view.component.html',
   styleUrls: ['view.component.css'],
-  directives: [
-    CodeEditorComponent,
-    SubmissionModalComponent
-  ],
-  pipes: [MarkdownPipe]
+  directives: [CodeEditorComponent]
 })
 export class ViewComponent implements OnInit, OnDestroy {
   problem: Problem;

@@ -1,28 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs/Rx';
 
-import {
-  AuthService,
-  LangPipe,
-  LoginModalService,
-  MySubmission,
-  PrecisionPipe,
-  RepositoryService,
-  SpacifyPipe
-} from '../../../shared';
+import { AuthService, LoginModalService, MySubmission, RepositoryService } from '../../../shared';
 import { SharingService } from '../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-my-submissions',
   templateUrl: 'my-submissions.component.html',
-  styleUrls: ['my-submissions.component.css'],
-  pipes: [
-    LangPipe,
-    PrecisionPipe,
-    SpacifyPipe
-  ]
+  styleUrls: ['my-submissions.component.css']
 })
 export class MySubmissionsComponent implements OnInit, OnDestroy {
   mySubmissions: MySubmission[];

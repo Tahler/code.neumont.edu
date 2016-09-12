@@ -6,4 +6,3 @@ export * from './supported-languages';
 export * from './test-case';
 export * from './time-span';
 export * from './user';
-export * from './zero-pad';

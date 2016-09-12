@@ -4,7 +4,6 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'ansiToHtml'
 })
 export class AnsiToHtmlPipe implements PipeTransform {
-
   transform(ansi: string): string {
     return ansi
         // Replace tabs with 4 spaces
@@ -12,5 +11,4 @@ export class AnsiToHtmlPipe implements PipeTransform {
         // Replace newline with <br>
         .replace(/\r*\n/g, '<br>');
   }
-
 }

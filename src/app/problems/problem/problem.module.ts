@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ModalModule } from 'ng2-bootstrap';
 
+import { FormattingModule } from '../../shared';
 import { ProblemComponent } from './problem.component';
 import { problemRouting } from './problem.routing';
 import { ViewComponent } from './view';
@@ -16,7 +17,10 @@ import { SharingService } from './shared';
   imports: [
     CommonModule,
     FormsModule,
+
     ModalModule,
+
+    FormattingModule,
     problemRouting
   ],
   declarations: [

@@ -7,7 +7,6 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'spacify'
 })
 export class SpacifyPipe implements PipeTransform {
-
   transform(value: string): string {
     return value
         // Insert a space before all caps
@@ -16,5 +15,4 @@ export class SpacifyPipe implements PipeTransform {
         .replace(/^./, char => char.toUpperCase())
         .trim();
   }
-
 }

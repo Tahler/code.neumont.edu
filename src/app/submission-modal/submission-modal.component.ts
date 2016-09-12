@@ -1,34 +1,18 @@
 import { Component, Input, OnDestroy, ViewChild } from '@angular/core';
 
-import { Subscription } from 'rxjs';
-import { ModalDirective, ModalOptions } from 'ng2-bootstrap/ng2-bootstrap';
+import { Subscription } from 'rxjs/Rx';
+import { ModalDirective, ModalOptions } from 'ng2-bootstrap';
 
-import {
-  AuthService,
-  AnsiToHtmlPipe,
-  PrecisionPipe,
-  Result,
-  Submission,
-  SubmissionService
-} from '../shared';
+import { AuthService, Result, Submission, SubmissionService } from '../shared';
 
-const ConfigPreventCloseOnClickOutside: ModalOptions = { backdrop: 'static' };
+const configPreventCloseOnClickOutside: ModalOptions = { backdrop: 'static' };
 
 @Component({
   moduleId: module.id,
   selector: 'app-submission-modal',
   templateUrl: 'submission-modal.component.html',
-  styleUrls: [
-    'submission-modal.component.css',
-    // TODO:
-    // '/vendor/font-awesome/css/font-awesome.css'
-  ],
-  pipes: [
-    AnsiToHtmlPipe,
-    PrecisionPipe
-  ],
+  styleUrls: ['submission-modal.component.css'],
   providers: [
-    AuthService,
     SubmissionService
   ]
 })
@@ -58,7 +42,7 @@ export class SubmissionModalComponent implements OnDestroy {
       }
 
       // Disallow click away
-      this.modal.config = ConfigPreventCloseOnClickOutside;
+      this.modal.config = configPreventCloseOnClickOutside;
       // Save in case of retry
       this.lastSubmission = submission;
       this.state = State.Submitting;

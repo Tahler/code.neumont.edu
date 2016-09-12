@@ -1,21 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  LangPipe,
-  PrecisionPipe,
-  SuccessfulSubmission,
-  RepositoryService,
-  User
-} from '../../../../shared';
+import { SuccessfulSubmission, RepositoryService, User } from '../../../../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-ranking',
   templateUrl: 'ranking.component.html',
-  styleUrls: ['ranking.component.css'],
-  pipes: [
-    LangPipe,
-    PrecisionPipe
-  ]
+  styleUrls: ['ranking.component.css']
 })
 export class RankingComponent implements OnInit {
   @Input() rank: number;
