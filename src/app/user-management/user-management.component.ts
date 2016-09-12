@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES, Router } from '@angular/router';
-import {
-  FORM_DIRECTIVES,
-  REACTIVE_FORM_DIRECTIVES,
-  FormGroup,
-  FormControl,
-  Validators
-} from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { matchingPasswordValidator } from '../register/validators';
 import { AuthService, LoginModalService } from '../shared';
 
@@ -19,12 +13,7 @@ import { AuthService, LoginModalService } from '../shared';
   moduleId: module.id,
   selector: 'app-user-management',
   templateUrl: 'user-management.component.html',
-  styleUrls: ['user-management.component.css'],
-  directives: [
-    ROUTER_DIRECTIVES,
-    FORM_DIRECTIVES,
-    REACTIVE_FORM_DIRECTIVES
-  ]
+  styleUrls: ['user-management.component.css']
 })
 export class UserManagementComponent implements OnInit {
   action: Action;

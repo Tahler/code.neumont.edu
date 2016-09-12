@@ -11,6 +11,7 @@ const problemsRoutes: Routes = [
 const appRoutes: Routes = [
   { path: '', loadChildren: 'app/home/home.module#HomeModule' },
   { path: 'register', loadChildren: 'app/register/register.module#RegisterModule' },
+  { path: 'usermgmt', loadChildren: 'app/user-management/user-management.module#UserManagementModule' },
   { path: 'verification-required', loadChildren: 'app/verification-required/verification-required.module#VerificationRequiredModule' },
   ...problemsRoutes,
   { path: '**', component: PageNotFoundComponent }
