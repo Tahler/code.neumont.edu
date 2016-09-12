@@ -4,20 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found';
 
 const problemsRoutes: Routes = [
-  {
-    path: 'problems',
-    loadChildren: 'app/problems/problem-list/problem-list.module#ProblemListModule'
-  },
+  { path: 'problems', loadChildren: 'app/problems/problem-list/problem-list.module#ProblemListModule' },
   { path: 'problems/:id', loadChildren: 'app/problems/problem/problem.module#ProblemModule' }
 ];
 
 const appRoutes: Routes = [
   { path: '', loadChildren: 'app/home/home.module#HomeModule' },
   { path: 'register', loadChildren: 'app/register/register.module#RegisterModule' },
-  {
-    path: 'verification-required',
-    loadChildren: 'app/verification-required/verification-required.module#VerificationRequiredModule'
-  },
+  { path: 'verification-required', loadChildren: 'app/verification-required/verification-required.module#VerificationRequiredModule' },
   ...problemsRoutes,
   { path: '**', component: PageNotFoundComponent }
 ];
