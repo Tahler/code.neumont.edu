@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -13,7 +13,7 @@ import { AuthService, User } from '../shared';
   templateUrl: 'register.component.html',
   styleUrls: ['register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   nameControl = new FormControl('', Validators.required);
   emailControl = new FormControl('', [
     Validators.required,
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
     email: this.emailControl,
     password: this.passwordControl,
     confirmPassword: this.confirmPasswordControl
-  }, {}, matchingPasswordValidator('password', 'confirmPassword'));
+  }, matchingPasswordValidator('password', 'confirmPassword'));
 
   picture: File;
   profilePicturePreviewData = '';
@@ -41,9 +41,6 @@ export class RegisterComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router) { }
-
-  ngOnInit() {
-  }
 
   fileChange(fileInput: any) {
     let reader = new FileReader();

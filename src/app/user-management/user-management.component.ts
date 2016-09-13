@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { matchingPasswordValidator } from '../register/validators';
 import { AuthService, LoginModalService } from '../shared';
 
@@ -27,21 +28,21 @@ export class UserManagementComponent implements OnInit {
 
   constructor(
       private router: Router,
+      private route: ActivatedRoute,
       private authService: AuthService,
       private loginModalService: LoginModalService) { }
 
   ngOnInit() {
     // Grab the needed parameters from the URL
-    this.router.routerState.queryParams.subscribe(params => {
-      let mode = params['mode'];
-      let oobCode = params['oobCode'];
-      if (mode && oobCode) {
-        this.oobCode = oobCode;
-        this.handleEvent(mode);
-      } else {
-        this.redirectHome();
-      }
-    });
+    let params = this.route.snapshot.queryParams;
+    let mode = params['mode'];
+    let oobCode = params['oobCode'];
+    if (mode && oobCode) {
+      this.oobCode = oobCode;
+      this.handleEvent(mode);
+    } else {
+      this.redirectHome();
+    }
   }
 
   private handleEvent(mode: string): void {
@@ -92,7 +93,7 @@ export class UserManagementComponent implements OnInit {
     this.resetPasswordForm = new FormGroup({
       password: this.passwordControl,
       confirmPassword: this.confirmPasswordControl
-    }, {}, matchingPasswordValidator('password', 'confirmPassword'));
+    }, matchingPasswordValidator('password', 'confirmPassword'));
   }
 
   private resetPassword(newPassword: string): void {
