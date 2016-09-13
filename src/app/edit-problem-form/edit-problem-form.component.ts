@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 
 import { Problem, TestCase } from '../shared';
 
@@ -7,11 +6,7 @@ import { Problem, TestCase } from '../shared';
   moduleId: module.id,
   selector: 'app-edit-problem-form',
   templateUrl: 'edit-problem-form.component.html',
-  styleUrls: ['edit-problem-form.component.css'],
-  directives: [
-    FORM_DIRECTIVES,
-    REACTIVE_FORM_DIRECTIVES,
-  ]
+  styleUrls: ['edit-problem-form.component.css']
 })
 export class EditProblemFormComponent {
   @Input() problem: Problem;
