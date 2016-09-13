@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FORM_DIRECTIVES } from '@angular/forms';
+
 import { RepositoryService, User } from '../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-edit-profile',
   templateUrl: 'edit-profile.component.html',
-  styleUrls: ['edit-profile.component.css'],
-  directives: [FORM_DIRECTIVES]
+  styleUrls: ['edit-profile.component.css']
 })
 export class EditProfileComponent implements OnInit {
   user: User;
