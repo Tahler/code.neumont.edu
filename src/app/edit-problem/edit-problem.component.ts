@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { EditProblemFormComponent } from '../edit-problem-form';
+
 import { AuthService, Problem, RepositoryService, TestCase, } from '../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-edit-problem',
   templateUrl: 'edit-problem.component.html',
-  styleUrls: ['edit-problem.component.css'],
-  directives: [EditProblemFormComponent]
+  styleUrls: ['edit-problem.component.css']
 })
 export class EditProblemComponent implements OnInit {
-  // problem = new Problem();
-  // testCases = [new TestCase()];
   problem: Problem;
   testCases: TestCase[];
 

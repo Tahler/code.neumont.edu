@@ -16,6 +16,7 @@ const competitionsRoutes: Routes = [
 const appRoutes: Routes = [
   { path: '', loadChildren: 'app/home/home.module#HomeModule' },
   { path: 'create-problem', loadChildren: 'app/create-problem/create-problem.module#CreateProblemModule' },
+  { path: 'edit-problem/:id', loadChildren: 'app/edit-problem/edit-problem.module#EditProblemModule' },
   { path: 'edit-profile/:id', loadChildren: 'app/edit-profile/edit-profile.module#EditProfileModule' },
   { path: 'login-required', loadChildren: 'app/login-required/login-required.module#LoginRequiredModule' },
   { path: 'profiles/:id', loadChildren: 'app/profile/profile.module#ProfileModule' },
