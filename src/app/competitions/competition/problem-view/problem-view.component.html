@@ -15,7 +15,8 @@
     </div>
     <div *ngIf="!endedAlready">
       <div *ngIf="!solved">
-        <app-code-editor #editor [(ngModel)]="submission"></app-code-editor>
+        <!-- TODO: copy from problem-->
+        <!--<app-code-editor #editor [(ngModel)]="submission"></app-code-editor>-->
 
         <div *ngIf="endedWhileWatching" class="lead text-danger">
           The submission window has closed

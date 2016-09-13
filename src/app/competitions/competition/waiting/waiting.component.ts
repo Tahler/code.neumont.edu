@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+
 import { Observable } from 'rxjs/Rx';
 import * as moment from 'moment';
-import { CountdownComponent } from '../../../countdown';
+
 import { Competition, RepositoryService } from '../../../shared';
 
 @Component({
   moduleId: module.id,
-  selector: 'app-countdown',
+  selector: 'app-waiting',
   templateUrl: 'waiting.component.html',
-  styleUrls: ['waiting.component.css'],
-  directives: [CountdownComponent]
+  styleUrls: ['waiting.component.css']
 })
 export class WaitingComponent implements OnInit {
   competition: Competition;

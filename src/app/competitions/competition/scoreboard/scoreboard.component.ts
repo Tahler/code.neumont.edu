@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Observable, Subscription } from 'rxjs/Rx';
@@ -16,12 +16,12 @@ import {
   templateUrl: 'scoreboard.component.html',
   styleUrls: ['scoreboard.component.css']
 })
-export class ScoreboardComponent implements OnInit {
+export class ScoreboardComponent implements OnInit, OnDestroy {
   ended: boolean;
   competition: Competition;
   rankings: CompetitionScoreboardRanking[];
 
-  countdown: Subscription;
+  countdownSubscription: Subscription;
 
   constructor(
       private route: ActivatedRoute,
@@ -36,8 +36,9 @@ export class ScoreboardComponent implements OnInit {
             this.competition = competition;
             if (new Date() < competition.endTime) {
               this.ended = false;
-              Observable.timer(competition.endTime).subscribe(() => {
+              this.countdownSubscription = Observable.timer(competition.endTime).subscribe(() => {
                 this.ended = true;
+                this.countdownSubscription.unsubscribe();
               });
             } else {
               this.ended = true;
@@ -47,5 +48,11 @@ export class ScoreboardComponent implements OnInit {
           .getCompetitionScoreboard(competitionId)
           .subscribe(rankings => this.rankings = rankings);
     });
+  }
+
+  ngOnDestroy() {
+    if (this.countdownSubscription) {
+      this.countdownSubscription.unsubscribe();
+    }
   }
 }

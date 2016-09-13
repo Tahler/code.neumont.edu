@@ -1,7 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CompetitionComponent } from './';
+import { CompetitionComponent } from './competition.component';
 import { WaitingComponent } from './waiting';
 import { ScoreboardComponent } from './scoreboard';
 import { ProblemViewComponent } from './problem-view';
@@ -35,18 +35,12 @@ const competitionRoutes: Routes = [
           CompetitionStartedGuard
         ],
         children: [
-          {
-            path: ''
-          },
-          {
-            path: ':problemId',
-            component: ProblemViewComponent
-          }
+          { path: '' },
+          { path: ':problemId', component: ProblemViewComponent }
         ]
       }
     ]
   }
 ];
 
-export const competitionRouting: ModuleWithProviders =
-    RouterModule.forChild(competitionRoutes);
+export const competitionRouting: ModuleWithProviders = RouterModule.forChild(competitionRoutes);

@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router, ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import { Observable } from 'rxjs/Rx';
+import { Observable, Subscription } from 'rxjs/Rx';
 
 import { ProblemPreviewComponent } from './problem-preview';
 import { ScoreboardPreviewComponent } from './scoreboard-preview';
@@ -19,12 +19,14 @@ import {
   templateUrl: 'competition.component.html',
   styleUrls: ['competition.component.css']
 })
-export class CompetitionComponent implements OnInit {
+export class CompetitionComponent implements OnInit, OnDestroy {
   collapsed = false;
   ended: boolean;
   competition: Competition;
   problems: CompetitionProblem[];
   myRanking: any;
+
+  timerSubscription: Subscription;
 
   constructor(
       private router: Router,
@@ -40,8 +42,9 @@ export class CompetitionComponent implements OnInit {
           this.competition = competition;
           if (new Date() < competition.endTime) {
             this.ended = false;
-            Observable.timer(competition.endTime).subscribe(() => {
+            this.timerSubscription = Observable.timer(competition.endTime).subscribe(() => {
               this.ended = true;
+              this.timerSubscription.unsubscribe();
             });
           } else {
             this.ended = true;
@@ -50,9 +53,9 @@ export class CompetitionComponent implements OnInit {
     this.repoService
         .getCompetitionProblems(competitionId)
         .subscribe(competitionProblems => {
-          this.problems = competitionProblems;
-          if (this.problems[0]) {
-            this.router.navigate([competitionProblems[0].$key], { relativeTo: this.route });
+          if (this.route.children.length && competitionProblems[0]) {
+            // TODO: bring this back with updated router
+            // this.router.navigate([competitionProblems[0].$key], { relativeTo: this.route });
           }
         });
     this.authService.user.subscribe(user => {
@@ -61,6 +64,12 @@ export class CompetitionComponent implements OnInit {
           .getCompetitionRanking(competitionId, uid)
           .subscribe(ranking => this.myRanking = ranking);
     });
+  }
+
+  ngOnDestroy() {
+    if (this.timerSubscription) {
+      this.timerSubscription.unsubscribe();
+    }
   }
 
   hasSolved(problemId: string): boolean {

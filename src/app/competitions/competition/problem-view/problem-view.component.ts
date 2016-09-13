@@ -4,12 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs/Rx';
 
 import { SubmissionModalComponent } from '../../../submission-modal';
-import {
-  CompetitionProblem,
-  RepositoryService,
-  Submission,
-  User
-} from '../../../shared';
+import { CompetitionProblem, RepositoryService, Submission, User } from '../../../shared';
 
 @Component({
   moduleId: module.id,
@@ -17,7 +12,7 @@ import {
   templateUrl: 'problem-view.component.html',
   styleUrls: ['problem-view.component.css']
 })
-export class ProblemViewComponent implements OnInit {
+export class ProblemViewComponent implements OnInit, OnDestroy {
   problem: CompetitionProblem;
   submission: any = {};
 
@@ -25,6 +20,8 @@ export class ProblemViewComponent implements OnInit {
 
   endedAlready: boolean;
   endedWhileWatching = false;
+
+  timerSubscription: Subscription;
 
   constructor(
       private router: Router,
@@ -38,13 +35,15 @@ export class ProblemViewComponent implements OnInit {
       this.submission.competition = competitionId;
       this.repoService
           .getCompetition(competitionId)
+          .take(1)
           .subscribe(competition => {
             let now = new Date();
             // Designate as finished or schedule the finish time.
             if (now < competition.endTime) {
               this.endedAlready = false;
-              Observable.timer(competition.endTime).subscribe(() => {
+              this.timerSubscription = Observable.timer(competition.endTime).subscribe(() => {
                 this.endedWhileWatching = true;
+                this.timerSubscription.unsubscribe();
               });
             } else {
               this.endedAlready = true;
@@ -61,5 +60,11 @@ export class ProblemViewComponent implements OnInit {
             .subscribe(solved => this.solved = solved);
       });
     });
+  }
+
+  ngOnDestroy() {
+    if (this.timerSubscription) {
+      this.timerSubscription.unsubscribe();
+    }
   }
 }
