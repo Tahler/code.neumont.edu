@@ -29,9 +29,8 @@ export class ProblemViewComponent implements OnInit, OnDestroy {
       private repoService: RepositoryService) { }
 
   ngOnInit() {
-    let parentActivatedRoute = this.router.routerState.parent(this.route);
-    parentActivatedRoute.params.subscribe(params => {
-      let competitionId = params['id'];
+    this.route.parent.params.subscribe(parentRouteParams => {
+      let competitionId = parentRouteParams['id'];
       this.submission.competition = competitionId;
       this.repoService
           .getCompetition(competitionId)
@@ -49,8 +48,8 @@ export class ProblemViewComponent implements OnInit, OnDestroy {
               this.endedAlready = true;
             }
           });
-      this.route.params.subscribe(params => {
-        let problemId = params['problemId'];
+      this.route.params.subscribe(routeParams => {
+        let problemId = routeParams['problemId'];
         this.submission.problem = problemId;
         this.repoService
             .getCompetitionProblem(competitionId, problemId)

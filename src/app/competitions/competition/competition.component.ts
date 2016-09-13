@@ -53,9 +53,9 @@ export class CompetitionComponent implements OnInit, OnDestroy {
     this.repoService
         .getCompetitionProblems(competitionId)
         .subscribe(competitionProblems => {
-          if (this.route.children.length && competitionProblems[0]) {
-            // TODO: bring this back with updated router
-            // this.router.navigate([competitionProblems[0].$key], { relativeTo: this.route });
+          if (competitionProblems[0]) {
+            this.problems = competitionProblems;
+            this.router.navigate([competitionProblems[0].$key], { relativeTo: this.route });
           }
         });
     this.authService.user.subscribe(user => {
