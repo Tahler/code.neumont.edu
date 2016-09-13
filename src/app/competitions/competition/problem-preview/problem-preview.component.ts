@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { CompetitionProblem, RepositoryService } from '../../shared';
 
 @Component({
   moduleId: module.id,

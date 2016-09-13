@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import * as moment from 'moment';
-import { CountdownComponent } from '../../countdown';
-import { Competition, RepositoryService } from '../../shared';
+import { CountdownComponent } from '../../../countdown';
+import { Competition, RepositoryService } from '../../../shared';
 
 @Component({
   moduleId: module.id,

@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { Observable, Subscription } from 'rxjs/Rx';
 import * as moment from 'moment';
-import { CountdownComponent } from '../../countdown';
-import { Competition, TimeSpan } from '../../shared';
+
+import { Competition, TimeSpan } from '../../../shared';
 
 // The time in milliseconds before a competition is considered to start soon
 // 6 hours = 21600000
@@ -17,8 +18,7 @@ const oneDayInMilliseconds = 86400000;
   moduleId: module.id,
   selector: 'app-competition-preview',
   templateUrl: 'competition-preview.component.html',
-  styleUrls: ['competition-preview.component.css'],
-  directives: [CountdownComponent]
+  styleUrls: ['competition-preview.component.css']
 })
 export class CompetitionPreviewComponent implements OnInit, OnDestroy {
   @Input() competition: Competition;

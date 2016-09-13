@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
+
 import { Observable } from 'rxjs/Rx';
-import { CollapseDirective } from 'ng2-bootstrap';
-import { CountdownComponent } from '../countdown';
+
 import { ProblemPreviewComponent } from './problem-preview';
 import { ScoreboardPreviewComponent } from './scoreboard-preview';
 import {
@@ -11,20 +11,13 @@ import {
   CompetitionProblem,
   CompetitionScoreboardRanking,
   RepositoryService
-} from '../shared';
+} from '../../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-competition',
   templateUrl: 'competition.component.html',
-  styleUrls: ['competition.component.css'],
-  directives: [
-    ROUTER_DIRECTIVES,
-    CollapseDirective,
-    CountdownComponent,
-    ProblemPreviewComponent,
-    ScoreboardPreviewComponent
-  ]
+  styleUrls: ['competition.component.css']
 })
 export class CompetitionComponent implements OnInit {
   collapsed = false;

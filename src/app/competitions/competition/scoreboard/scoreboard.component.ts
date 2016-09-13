@@ -1,25 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
 import { Observable, Subscription } from 'rxjs/Rx';
-import { CountdownComponent } from '../../countdown';
+
 import {
   Competition,
   CompetitionScoreboardRanking,
   RepositoryService,
-  TimeSpan,
-  ZeroPadPipe
-} from '../../shared';
+  TimeSpan
+} from '../../../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-scoreboard',
   templateUrl: 'scoreboard.component.html',
-  styleUrls: ['scoreboard.component.css'],
-  directives: [
-    ROUTER_DIRECTIVES,
-    CountdownComponent
-  ],
-  pipes: [ZeroPadPipe]
+  styleUrls: ['scoreboard.component.css']
 })
 export class ScoreboardComponent implements OnInit {
   ended: boolean;

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RepositoryService, CompetitionScoreboardRanking } from '../../shared';
+
+import { RepositoryService, CompetitionScoreboardRanking } from '../../../shared';
 
 @Component({
   moduleId: module.id,
@@ -17,5 +18,4 @@ export class ScoreboardPreviewComponent implements OnInit {
     this.repoService.getCompetitionScoreboard(this.competitionId)
         .subscribe(rankings => this.rankings = rankings);
   }
-
 }

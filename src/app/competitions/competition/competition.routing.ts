@@ -1,18 +1,20 @@
-import { RouterConfig } from '@angular/router';
+import { ModuleWithProviders } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
 import { CompetitionComponent } from './';
 import { WaitingComponent } from './waiting';
 import { ScoreboardComponent } from './scoreboard';
 import { ProblemViewComponent } from './problem-view';
 import {
-  LoggedInGuard,
-  VerifiedGuard,
   CompetitionStartedGuard,
-  CompetitionNotStartedGuard
-} from '../shared';
+  CompetitionNotStartedGuard,
+  LoggedInGuard,
+  VerifiedGuard
+} from '../../shared';
 
-export const CompetitionRoutes: RouterConfig = [
+const competitionRoutes: Routes = [
   {
-    path: 'competitions/:id',
+    path: '',
     children: [
       {
         path: 'countdown',
@@ -45,3 +47,6 @@ export const CompetitionRoutes: RouterConfig = [
     ]
   }
 ];
+
+export const competitionRouting: ModuleWithProviders =
+    RouterModule.forChild(competitionRoutes);

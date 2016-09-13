@@ -1,30 +1,21 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { ROUTER_DIRECTIVES, Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { Observable, Subscription } from 'rxjs/Rx';
 
-import { CodeEditorComponent } from '../../code-editor';
-import { SubmissionModalComponent } from '../../submission-modal';
+import { SubmissionModalComponent } from '../../../submission-modal';
 import {
   CompetitionProblem,
-  MarkdownPipe,
   RepositoryService,
   Submission,
-  SubmissionTemplateService,
   User
-} from '../../shared';
+} from '../../../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-problem-view',
   templateUrl: 'problem-view.component.html',
-  styleUrls: ['problem-view.component.css'],
-  directives: [
-    ROUTER_DIRECTIVES,
-    CodeEditorComponent,
-    SubmissionModalComponent
-  ],
-  pipes: [MarkdownPipe],
-  providers: [SubmissionTemplateService]
+  styleUrls: ['problem-view.component.css']
 })
 export class ProblemViewComponent implements OnInit {
   problem: CompetitionProblem;
@@ -38,19 +29,9 @@ export class ProblemViewComponent implements OnInit {
   constructor(
       private router: Router,
       private route: ActivatedRoute,
-      private repoService: RepositoryService,
-      private templateService: SubmissionTemplateService) { }
+      private repoService: RepositoryService) { }
 
   ngOnInit() {
-    // Load in the template
-    this.templateService
-        .getDefaultSubmission()
-        .take(1)
-        .subscribe(defaultSubmission => {
-          this.submission.lang = defaultSubmission.lang;
-          this.submission.src = defaultSubmission.src;
-        });
-
     let parentActivatedRoute = this.router.routerState.parent(this.route);
     parentActivatedRoute.params.subscribe(params => {
       let competitionId = params['id'];
