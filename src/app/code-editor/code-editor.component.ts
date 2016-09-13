@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 
-import { LanguageDropdownComponent } from './language-dropdown';
 import { CodeMirrorComponent } from './code-mirror';
+import { LanguageDropdownComponent } from './language-dropdown';
 import { SubmissionTemplateService } from './submission-template.service';
 import { Language, Submission } from '../shared';
 
@@ -12,20 +12,13 @@ import { Language, Submission } from '../shared';
   styleUrls: ['code-editor.component.css']
 })
 export class CodeEditorComponent implements OnInit {
-  private _submission: Submission;
-  @Input() set submission(v: Submission) {
-    if (this._submission != v) {
-      this._submission = v;
-      if (this.editor) {
-        this.editor.src = v.src;
-      }
-    }
-  }
+  @ViewChild('codeMirror') codeMirror: CodeMirrorComponent;
+  @ViewChild('langDropdown') langDropdown: LanguageDropdownComponent;
+
+  lang: Language;
+  submission: Submission;
 
   @Output() submissionChange = new EventEmitter();
-
-  @ViewChild('editor') editor: CodeMirrorComponent;
-  @ViewChild('langDropdown') langDropdown: LanguageDropdownComponent;
 
   constructor(private templateService: SubmissionTemplateService) { }
 
@@ -33,26 +26,31 @@ export class CodeEditorComponent implements OnInit {
     this.templateService
         .getDefaultSubmission()
         .take(1)
-        .subscribe(submission => this.submission = submission);
+        .subscribe(submission => {
+           this.submission = submission;
+           // Initial setup
+           this.codeMirror.src = submission.src;
+           this.langDropdown.lang = submission.lang;
+        });
+  }
+
+  // Called on codemirror text change
+  onSrcChange(src: string) {
+    this.submission.src = src;
+    this.submissionChange.emit(this.submission);
   }
 
   // Called on language dropdown select
   onLangChange(newLang: Language) {
-    this._submission.lang = newLang.apiCode;
-    console.log(this.editor);
-
-    if (this.editor) {
-      this.editor.mode = `text/${newLang.editorMode}`;
-    }
-    this.templateService
-        .getTemplate(newLang.apiCode)
-        .take(1)
-        .subscribe(template => this.onSrcChange(template));
+    this.lang = newLang;
+    this.submission.lang = newLang.apiCode;
+    this.loadTemplate(newLang.apiCode);
   }
 
-  // Called on codemirror text change and on template load
-  onSrcChange(src: string) {
-    this._submission.src = src;
-    this.submissionChange.emit(this._submission);
+  loadTemplate(langCode: string) {
+    this.templateService
+        .getTemplate(langCode)
+        .take(1)
+        .subscribe(template => this.codeMirror.src = template);
   }
 }

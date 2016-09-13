@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, ElementRef, EventEmitter, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, Output, ElementRef, EventEmitter, ViewChild } from '@angular/core';
 
 import { fromTextArea, Editor, EditorConfiguration } from 'codemirror';
 
@@ -16,8 +16,7 @@ import 'codemirror/mode/rust/rust';
   moduleId: module.id,
   selector: 'app-code-mirror',
   templateUrl: 'code-mirror.component.html',
-  styleUrls: ['code-mirror.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['code-mirror.component.css']
 })
 export class CodeMirrorComponent implements OnInit {
   @ViewChild('textarea') textarea: ElementRef;
@@ -26,28 +25,23 @@ export class CodeMirrorComponent implements OnInit {
 
   @Input() autofocus: boolean = false;
 
-  private prematurelySetMode: string = '';
+  private initialMode = '';
   @Input() set mode(mode: string) {
     if (this.editor) {
       this.editor.setOption('mode', mode);
     } else {
-      this.prematurelySetMode = mode;
+      this.initialMode = mode;
     }
   }
-  get mode(): string {
-    return this.editor
-        ? this.editor.getOption('mode')
-        : null;
-  }
 
-  private prematurelySetSrc: string = '';
+  private initialSrc = '';
   @Input() set src(src: string) {
+    let actualValue = src || '';
     if (this.editor) {
-      let actualValue = src || '';
       this.editor.setValue(actualValue);
       this.srcChange.emit(actualValue);
     } else {
-      this.prematurelySetSrc = src;
+      this.initialSrc = actualValue;
     }
   }
   @Output() srcChange = new EventEmitter();
@@ -63,10 +57,10 @@ export class CodeMirrorComponent implements OnInit {
 
     this.editor = fromTextArea(this.textarea.nativeElement, config);
 
-    this.editor.setValue(this.prematurelySetSrc);
-    this.prematurelySetSrc = null;
-    this.editor.setOption('mode', this.prematurelySetMode);
-    this.prematurelySetMode = null;
+    this.editor.setOption('mode', this.initialMode);
+    this.initialMode = null;
+    this.editor.setValue(this.initialSrc);
+    this.initialSrc = null;
 
     this.editor.on('change', editor => {
       // User is typing...

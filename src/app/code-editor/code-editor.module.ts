@@ -7,9 +7,7 @@ import { LanguageDropdownComponent } from './language-dropdown';
 import { SubmissionTemplateService } from './submission-template.service';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   declarations: [
     CodeEditorComponent,
     CodeMirrorComponent,

@@ -18,52 +18,52 @@ export interface Language {
 export const supportedLanguages: Language[] = [
   {
     apiCode: 'c',
-    editorMode: 'x-csrc',
+    editorMode: 'text/x-csrc',
     name: 'C'
   },
   {
     apiCode: 'cpp',
-    editorMode: 'x-c++src',
+    editorMode: 'text/x-c++src',
     name: 'C++'
   },
   {
     apiCode: 'csharp',
-    editorMode: 'x-csharp',
+    editorMode: 'text/x-csharp',
     name: 'C#'
   },
   {
     apiCode: 'go',
-    editorMode: 'x-go',
+    editorMode: 'text/x-go',
     name: 'Go'
   },
   {
     apiCode: 'java',
-    editorMode: 'x-java',
+    editorMode: 'text/x-java',
     name: 'Java'
   },
   {
     apiCode: 'js',
-    editorMode: 'javascript',
+    editorMode: 'text/javascript',
     name: 'JavaScript'
   },
   {
     apiCode: 'python',
-    editorMode: 'x-python',
+    editorMode: 'text/x-python',
     name: 'Python 2'
   },
   {
     apiCode: 'python3',
-    editorMode: 'x-python',
+    editorMode: 'text/x-python',
     name: 'Python 3'
   },
   {
     apiCode: 'rust',
-    editorMode: 'x-rustsrc',
+    editorMode: 'text/x-rustsrc',
     name: 'Rust'
   },
   {
     apiCode: 'ts',
-    editorMode: 'typescript',
+    editorMode: 'text/typescript',
     name: 'TypeScript'
   }
 ];

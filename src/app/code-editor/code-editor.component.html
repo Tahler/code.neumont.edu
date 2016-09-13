@@ -1,7 +1,10 @@
 <div class="editor-area">
   <div class="header">
     <h3 class="title">Your Solution</h3>
-    <app-language-dropdown class="lang-dropdown" [lang]="_submission.lang" (langChange)="onLangChange($event)" #langDropdown></app-language-dropdown>
+    <app-language-dropdown #langDropdown
+      (langChange)="onLangChange($event)"></app-language-dropdown>
   </div>
-  <app-code-mirror [src]="_submission.src" (srcChange)="onSrcChange($event)" #editor></app-code-mirror>
+  <app-code-mirror #codeMirror
+    (srcChange)="onSrcChange($event)"
+    [mode]="lang.editorMode"></app-code-mirror>
 </div>
