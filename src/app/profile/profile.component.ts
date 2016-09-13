@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthService, RepositoryService, User } from '../shared';
 
@@ -7,8 +7,7 @@ import { AuthService, RepositoryService, User } from '../shared';
   moduleId: module.id,
   selector: 'app-profile',
   templateUrl: 'profile.component.html',
-  styleUrls: ['profile.component.css'],
-  directives: [ROUTER_DIRECTIVES]
+  styleUrls: ['profile.component.css']
 })
 export class ProfileComponent implements OnInit {
   myUid: string;

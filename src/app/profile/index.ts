@@ -1,2 +1,3 @@
 export * from './profile.component';
-export * from './profile.routes';
+export * from './profile.module';
+export * from './profile.routing';

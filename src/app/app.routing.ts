@@ -16,6 +16,7 @@ const competitionsRoutes: Routes = [
 const appRoutes: Routes = [
   { path: '', loadChildren: 'app/home/home.module#HomeModule' },
   { path: 'login-required', loadChildren: 'app/login-required/login-required.module#LoginRequiredModule' },
+  { path: 'profiles/:id', loadChildren: 'app/profile/profile.module#ProfileModule' },
   { path: 'register', loadChildren: 'app/register/register.module#RegisterModule' },
   { path: 'reset-password', loadChildren: 'app/reset-password/reset-password.module#ResetPasswordModule' },
   { path: 'usermgmt', loadChildren: 'app/user-management/user-management.module#UserManagementModule' },
