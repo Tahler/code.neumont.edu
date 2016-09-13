@@ -1,14 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { EditProblemFormComponent } from '../edit-problem-form';
-import { AuthService, Problem, RepositoryService, TestCase, } from '../shared';
+
+import { AuthService, Problem, RepositoryService, TestCase } from '../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-create-problem',
   templateUrl: 'create-problem.component.html',
-  styleUrls: ['create-problem.component.css'],
-  directives: [EditProblemFormComponent]
+  styleUrls: ['create-problem.component.css']
 })
 export class CreateProblemComponent implements OnInit {
   problem = new Problem();
