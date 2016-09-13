@@ -4,11 +4,14 @@ import { RouterModule } from '@angular/router';
 
 import { NavbarComponent } from './navbar.component';
 import { AuthAreaComponent } from './auth-area/auth-area.component';
+import { FirebaseModule } from '../shared';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+
+    FirebaseModule
   ],
   declarations: [
     NavbarComponent,
