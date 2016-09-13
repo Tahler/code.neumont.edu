@@ -1,13 +1,14 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+
 import { Observable, Subscription } from 'rxjs/Rx';
-import { TimeSpan, ZeroPadPipe } from '../shared';
+
+import { TimeSpan } from '../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'app-countdown',
   templateUrl: 'countdown.component.html',
-  styleUrls: ['countdown.component.css'],
-  pipes: [ZeroPadPipe]
+  styleUrls: ['countdown.component.css']
 })
 export class CountdownComponent implements OnInit, OnDestroy {
   @Input() date: Date;
@@ -21,8 +22,6 @@ export class CountdownComponent implements OnInit, OnDestroy {
   private timeSpan: TimeSpan = new TimeSpan();
 
   private timer: Subscription;
-
-  constructor() { }
 
   ngOnInit() {
     if (this.date) {
