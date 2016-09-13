@@ -1,21 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 import { ModalModule } from 'ng2-bootstrap';
 
 import { SubmissionModalComponent } from './submission-modal.component';
+import { SubmissionService } from './submission.service';
+import { FormattingModule } from '../shared';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-    ModalModule
+    HttpModule,
+
+    ModalModule,
+
+    FormattingModule
   ],
   declarations: [SubmissionModalComponent],
+  providers: [SubmissionService],
   exports: [SubmissionModalComponent]
 })
-export class SubmissionModalModule { }
+export class SubmissionModule { }
