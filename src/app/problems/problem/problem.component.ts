@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { Subscription } from 'rxjs/Rx';
 
@@ -10,14 +10,15 @@ import { SharingService } from './shared';
   moduleId: module.id,
   selector: 'app-problem',
   templateUrl: 'problem.component.html',
-  styleUrls: ['problem.component.css']
+  styleUrls: ['problem.component.css'],
+  // TODO: add in RC6
+  // providers: [SharingService]
 })
 export class ProblemComponent implements OnInit, OnDestroy {
   problemName: string;
   problemSubscription: Subscription;
 
   constructor(
-      private router: Router,
       private route: ActivatedRoute,
       private repoService: RepositoryService,
       private sharingService: SharingService) { }
@@ -37,9 +38,5 @@ export class ProblemComponent implements OnInit, OnDestroy {
     if (this.problemSubscription) {
       this.problemSubscription.unsubscribe();
     }
-  }
-
-  goToProblemsList() {
-    this.router.navigateByUrl('/problems');
   }
 }

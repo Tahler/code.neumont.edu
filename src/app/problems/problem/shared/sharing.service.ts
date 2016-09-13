@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+import { Observable, BehaviorSubject } from 'rxjs/Rx';
+
 import { Problem, Submission } from '../../../shared';
 
 @Injectable()
 export class SharingService {
+  // TODO: remove in RC6
+  constructor() { console.log('initting SharingService'); }
+
   private _submission = new BehaviorSubject<Submission>(null);
   public set submission(submission: Submission) {
     this._submission.next(submission);
