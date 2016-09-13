@@ -16,22 +16,31 @@ export class CodeEditorComponent implements OnInit {
   @ViewChild('langDropdown') langDropdown: LanguageDropdownComponent;
 
   lang: Language;
-  submission: Submission;
 
+  submission: Submission;
   @Output() submissionChange = new EventEmitter();
 
   constructor(private templateService: SubmissionTemplateService) { }
 
   ngOnInit() {
-    this.templateService
-        .getDefaultSubmission()
-        .take(1)
-        .subscribe(submission => {
-           this.submission = submission;
-           // Initial setup
-           this.codeMirror.src = submission.src;
-           this.langDropdown.lang = submission.lang;
-        });
+    if (this.submission) {
+      this.onSubmissionInit();
+    } else {
+      this.templateService
+          .getDefaultSubmission()
+          .take(1)
+          .subscribe(submission => {
+            this.submission = submission;
+            this.onSubmissionInit();
+          });
+    }
+  }
+
+  onSubmissionInit() {
+    // Initial setup
+    this.codeMirror.src = this.submission.src;
+    this.langDropdown.lang = this.submission.lang;
+    this.submissionChange.emit(this.submission);
   }
 
   // Called on codemirror text change

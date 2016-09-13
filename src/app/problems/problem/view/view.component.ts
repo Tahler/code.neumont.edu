@@ -37,7 +37,9 @@ export class ViewComponent implements OnInit, OnDestroy {
                 .subscribe(user => this.creator = user);
           }
         });
-    this.sharingService.submissionObservable.subscribe(submission => this.submission = submission);
+    this.sharingService
+        .submissionObservable
+        .subscribe(submission => this.submission = submission);
   }
 
   ngOnDestroy() {
