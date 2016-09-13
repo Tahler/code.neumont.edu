@@ -110,7 +110,6 @@ const barrels: string[] = [
   'app/shared/guards',
   'app/shared/models',
   'app/shared/pipes',
-  'app/shared/services',
   'app/submission-modal',
   'app/user-management',
   'app/verification-required'
