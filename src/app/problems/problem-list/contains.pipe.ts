@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Problem } from '../';
+
+import { Problem } from '../../shared';
 
 @Pipe({
   name: 'contains'
