@@ -15,9 +15,7 @@ import { LoginModalComponent } from './login-modal.component';
     RouterModule,
     ModalModule
   ],
-  declarations: [
-    LoginModalComponent
-  ],
+  declarations: [LoginModalComponent],
   exports: [LoginModalComponent]
 })
 export class LoginModalModule { }
