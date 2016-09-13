@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { ModalModule } from 'ng2-bootstrap';
 
-import { FormattingModule } from '../../shared';
 import { ProblemComponent } from './problem.component';
 import { problemRouting } from './problem.routing';
 import { ViewComponent } from './view';
@@ -12,6 +11,8 @@ import { MySubmissionsComponent } from './my-submissions';
 import { LeaderboardComponent } from './leaderboard';
 import { RankingComponent } from './leaderboard/ranking';
 import { SharingService } from './shared';
+import { FormattingModule } from '../../shared';
+import { CodeEditorModule } from '../../code-editor';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { SharingService } from './shared';
     ModalModule,
 
     FormattingModule,
+    CodeEditorModule,
     problemRouting
   ],
   declarations: [

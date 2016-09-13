@@ -15,7 +15,7 @@ export interface Language {
   name: string;
 }
 
-export const SupportedLanguages: Language[] = [
+export const supportedLanguages: Language[] = [
   {
     apiCode: 'c',
     editorMode: 'x-csrc',

@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { Submission } from '../models';
 
-const DefaultTemplate = `Enter your code here.
+import { Observable } from 'rxjs/Rx';
+
+import { Submission } from '../shared';
+
+const defaultTemplate = `Enter your code here.
 Read input from STDIN. Write output to STDOUT.`
 
-const Templates = {
+const templates = {
   'c': `#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -112,7 +114,7 @@ export class SubmissionTemplateService {
 
   // TODO: use firebase and lazy load
   getTemplate(langId: string): Observable<string> {
-    let template = Templates[langId] || DefaultTemplate;
+    let template = templates[langId] || defaultTemplate;
     return Observable.of(template);
   }
 

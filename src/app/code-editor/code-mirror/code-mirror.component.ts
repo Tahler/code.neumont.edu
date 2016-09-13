@@ -1,8 +1,9 @@
-import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Language } from '../../shared';
+import { Component, OnInit, Input, Output, ElementRef, EventEmitter, ViewChild, ViewEncapsulation } from '@angular/core';
 
 import { fromTextArea, Editor, EditorConfiguration } from 'codemirror';
+
+import { Language } from '../../shared';
+
 // TODO: lazy load
 import 'codemirror/addon/mode/simple';
 import 'codemirror/mode/clike/clike';
@@ -11,39 +12,45 @@ import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/python/python';
 import 'codemirror/mode/rust/rust';
 
-const noop = () => {};
-
-const INPUT_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => CodeMirrorComponent),
-  multi: true
-};
-
 @Component({
   moduleId: module.id,
   selector: 'app-code-mirror',
   templateUrl: 'code-mirror.component.html',
-  styleUrls: [
-    // TODO: find out how this can be restricted here only (also change encapsulation)
-    // '/vendor/codemirror/lib/codemirror.css',
-    'code-mirror.component.css'
-  ],
-  encapsulation: ViewEncapsulation.None,
-  providers: [INPUT_CONTROL_VALUE_ACCESSOR]
+  styleUrls: ['code-mirror.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
-export class CodeMirrorComponent implements OnInit, ControlValueAccessor {
+export class CodeMirrorComponent implements OnInit {
   @ViewChild('textarea') textarea: ElementRef;
+  // The CodeMirror editor
   editor: Editor;
 
   @Input() autofocus: boolean = false;
 
+  private prematurelySetMode: string = '';
   @Input() set mode(mode: string) {
     if (this.editor) {
       this.editor.setOption('mode', mode);
+    } else {
+      this.prematurelySetMode = mode;
     }
   }
+  get mode(): string {
+    return this.editor
+        ? this.editor.getOption('mode')
+        : null;
+  }
 
-  constructor() { }
+  private prematurelySetSrc: string = '';
+  @Input() set src(src: string) {
+    if (this.editor) {
+      let actualValue = src || '';
+      this.editor.setValue(actualValue);
+      this.srcChange.emit(actualValue);
+    } else {
+      this.prematurelySetSrc = src;
+    }
+  }
+  @Output() srcChange = new EventEmitter();
 
   ngOnInit() {
     let config: EditorConfiguration = {
@@ -53,29 +60,17 @@ export class CodeMirrorComponent implements OnInit, ControlValueAccessor {
       lineNumbers: true,
       lineWrapping: true
     };
+
     this.editor = fromTextArea(this.textarea.nativeElement, config);
+
+    this.editor.setValue(this.prematurelySetSrc);
+    this.prematurelySetSrc = null;
+    this.editor.setOption('mode', this.prematurelySetMode);
+    this.prematurelySetMode = null;
+
     this.editor.on('change', editor => {
-      this.onChangeCallback(editor.getValue());
-      this.onTouchedCallback();
+      // User is typing...
+      this.srcChange.emit(editor.getValue());
     });
-  }
-
-  // ngModel changes on us
-  writeValue(value: string) {
-    if (this.editor) {
-      this.editor.setValue(value || '');
-    }
-  }
-
-  // Registed by ngModel
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
-
-  registerOnChange(fn: any) {
-    this.onChangeCallback = fn;
-  }
-
-  registerOnTouched(fn: any) {
-    this.onTouchedCallback = fn;
   }
 }

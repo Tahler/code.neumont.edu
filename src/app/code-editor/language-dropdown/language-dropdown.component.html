@@ -9,7 +9,7 @@
     <span *ngIf="currentLanguage">{{currentLanguage.name}}</span> <span class="caret"></span>
   </button>
   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
-    <li *ngFor="let language of supportedLanguages">
+    <li *ngFor="let language of allLanguages">
       <a (click)="selected(language)">{{language.name}}</a>
     </li>
   </ul>

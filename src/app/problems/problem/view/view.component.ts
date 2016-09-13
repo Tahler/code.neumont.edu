@@ -12,8 +12,7 @@ import { SharingService } from '../shared';
   moduleId: module.id,
   selector: 'app-view',
   templateUrl: 'view.component.html',
-  styleUrls: ['view.component.css'],
-  directives: [CodeEditorComponent]
+  styleUrls: ['view.component.css']
 })
 export class ViewComponent implements OnInit, OnDestroy {
   problem: Problem;
@@ -44,6 +43,10 @@ export class ViewComponent implements OnInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  onSubmissionChange(newSubmission: Submission) {
+    this.submission = newSubmission;
   }
 
   isMyProblem(): Observable<boolean> {
