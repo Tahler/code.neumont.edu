@@ -11,3 +11,4 @@ export * from './is-neumonter-guard.service';
 export * from './logged-in-guard.service';
 export * from './not-logged-in-guard.service';
 export * from './verified-guard.service';
+export * from './not-verified-guard.service';

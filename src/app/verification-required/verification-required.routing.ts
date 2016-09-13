@@ -1,8 +1,8 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { VerificationRequiredComponent } from './';
-import { NotVerifiedGuard } from './not-verified-guard.service';
+import { VerificationRequiredComponent } from './verification-required.component';
+import { NotVerifiedGuard } from '../shared';
 
 const verificationRoutes: Routes = [
   {
@@ -13,5 +13,3 @@ const verificationRoutes: Routes = [
 ];
 
 export const verificationRouting: ModuleWithProviders = RouterModule.forChild(verificationRoutes);
-
-export const verificationRoutingProviders: any[] = [NotVerifiedGuard];
