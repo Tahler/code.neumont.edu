@@ -105,8 +105,6 @@ process.stdin.on('end', () => main(_input));
 
 @Injectable()
 export class SubmissionTemplateService {
-  constructor() { }
-
   // TODO: make a user preference
   getPreferredLanguage(): Observable<string> {
     return Observable.of('java');
@@ -120,7 +118,7 @@ export class SubmissionTemplateService {
 
   getDefaultSubmission(): Observable<Submission> {
     return this.getPreferredLanguage()
-      .flatMap(preferredLanguage =>
+      .flatMap<Submission>(preferredLanguage =>
         this.getTemplate(preferredLanguage)
           .map(template => ({
             lang: preferredLanguage,

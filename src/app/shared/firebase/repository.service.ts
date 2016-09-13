@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs/Rx';
 import * as firebase from 'firebase';
 import { AngularFire } from 'angularfire2';
+
 import {
   Competition,
   CompetitionProblem,
@@ -13,7 +15,7 @@ import {
   TestCase,
   TimeSpan,
   User
-} from '../';
+} from '../models';
 
 @Injectable()
 export class RepositoryService {
@@ -89,7 +91,7 @@ export class RepositoryService {
 
   hasSolvedCompetitionProblem(competitionId: string, problemId: string): Observable<boolean> {
     return this.af.auth
-        .flatMap(auth => this.af.database
+        .flatMap<boolean>(auth => this.af.database
             .object(``
                 + `/competitionScoreboards/${competitionId}`
                 + `/${auth.uid}/problems/${problemId}/solutionSubmittedAfter`)
@@ -121,7 +123,7 @@ export class RepositoryService {
                   return ranking;
                 }))
         // Get the user data per uid
-        .flatMap(rankingsSnapshot =>
+        .flatMap<CompetitionScoreboardRanking[]>(rankingsSnapshot =>
             // Combine each Observable<T>[] to Observable<T[]>
             Observable.forkJoin<CompetitionScoreboardRanking[]>(
                 // Map any[] to Observable<CompetitionScoreboardRanking>[]

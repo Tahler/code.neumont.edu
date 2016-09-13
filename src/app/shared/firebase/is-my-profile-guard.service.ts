@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
+
 import { Observable } from 'rxjs/Rx';
-import { AuthService } from '../services';
+
+import { AuthService } from './auth.service';
 
 /**
  * Only allows passage if the user's id is equal to the profile id

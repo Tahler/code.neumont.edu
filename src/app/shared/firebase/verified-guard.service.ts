@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { AuthService } from '../services';
+
+import { Observable } from 'rxjs/Rx';
+
+import { AuthService } from './auth.service';
 
 /**
  * Only allows those with a verified email to pass.

@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http, Headers } from '@angular/http';
+
 import { Observable } from 'rxjs/Rx';
 import * as firebase from 'firebase';
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+
 import { User } from '../';
 import { RepositoryService } from './repository.service';
 
-const NewlyVerifiedUrl = 'http://code.neumont.edu/verified';
-const RequestHeaders = new Headers({
-  'Content-Type': 'application/json'
-});
+const newlyVerifiedUrl = 'http://code.neumont.edu/verified';
+const requestHeaders = new Headers({ 'Content-Type': 'application/json' });
 
-const EmailPasswordConfig = {
+const emailPasswordConfig = {
   provider: AuthProviders.Password,
   method: AuthMethods.Password
 };
@@ -60,13 +60,13 @@ export class AuthService {
   }
 
   get user(): Observable<User> {
-    return this.auth.flatMap(auth => auth
+    return this.auth.flatMap<User>(auth => auth
         ? this.repoService.getUser(auth.uid)
         : Observable.of(null));
   }
 
   get token(): Observable<string> {
-    return this.auth.flatMap(auth => {
+    return this.auth.flatMap<string>(auth => {
       let promise: Promise<string> = auth ? auth.getToken(true) : Promise.resolve(null);
       return Observable.fromPromise(promise);
     });
@@ -132,7 +132,7 @@ export class AuthService {
   private notifyNewlyVerified(): Promise<void> {
     return this.token.take(1).toPromise().then(token => token
         ? this.http
-              .post(NewlyVerifiedUrl, { token }, RequestHeaders)
+              .post(newlyVerifiedUrl, { token }, requestHeaders)
               .map(res => {})
               .toPromise()
         : Promise.resolve(null));
@@ -154,7 +154,7 @@ export class AuthService {
   }
 
   logInWithEmailPassword(email: string, password: string): Promise<void> {
-    return this.af.auth.login({ email, password }, EmailPasswordConfig);
+    return this.af.auth.login({ email, password }, emailPasswordConfig);
   }
 
   logInWithFacebook(): void { }

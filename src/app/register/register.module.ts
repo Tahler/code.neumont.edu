@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ng2-bootstrap';
 
 import { RegisterComponent } from './register.component';
-import { registerRouting, registerRouteProviders } from './register.routing';
+import { registerRouting } from './register.routing';
 
 @NgModule({
   imports: [
@@ -14,11 +14,12 @@ import { registerRouting, registerRouteProviders } from './register.routing';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+
     ModalModule,
+
     registerRouting
   ],
   declarations: [RegisterComponent],
-  providers: [registerRouteProviders],
   exports: [RegisterComponent]
 })
 export class RegisterModule { }

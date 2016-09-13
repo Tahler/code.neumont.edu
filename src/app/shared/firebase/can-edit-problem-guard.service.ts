@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
+
 import { Observable } from 'rxjs/Rx';
-import { AuthService, RepositoryService } from '../services';
+
+import { AuthService } from './auth.service';
+import { RepositoryService } from './repository.service';
 
 /**
  * Only allows those who are Neumont faculty or the creator of the problem to pass.

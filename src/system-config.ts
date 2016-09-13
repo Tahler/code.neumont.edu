@@ -104,6 +104,7 @@ const barrels: string[] = [
   'app/register',
   'app/reset-password',
   'app/shared',
+  'app/shared/firebase',
   'app/shared/formatting',
   'app/shared/guards',
   'app/shared/models',

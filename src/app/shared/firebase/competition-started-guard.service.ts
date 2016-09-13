@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+
 import { Observable } from 'rxjs/Rx';
-import { RepositoryService } from '../services';
+
+import { RepositoryService } from './repository.service';
 
 /**
- * Only allows passage if the start time of the competition is before now.
- * If this criteria is not met, the user is redirected to the select-problem page
+ * Only allows passage if the start time of the competition round has passed
+ * If this criteria is not met, the user is redirected to the countdown
  */
 @Injectable()
-export class CompetitionNotStartedGuard implements CanActivate {
+export class CompetitionStartedGuard implements CanActivate {
   constructor(
       private router: Router,
       private route: ActivatedRoute,
@@ -21,10 +23,10 @@ export class CompetitionNotStartedGuard implements CanActivate {
         .map(competition => competition.startTime)
         .map(startTime => {
           let hasStarted = currentTime > startTime;
-          if (hasStarted) {
-            this.router.navigate(['competitions', competitionId]);
+          if (!hasStarted) {
+            this.router.navigate(['competitions', competitionId, 'countdown']);
           }
-          return !hasStarted;
+          return hasStarted;
         })
         .take(1); // Observable needs to complete
   }

@@ -2,7 +2,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { RegisterComponent } from './';
-import { NotLoggedInGuard } from './not-logged-in-guard.service';
+import { NotLoggedInGuard } from '../shared';
 
 const registerRoutes: Routes = [
   {
@@ -11,7 +11,5 @@ const registerRoutes: Routes = [
     canActivate: [NotLoggedInGuard]
   }
 ];
-
-export const registerRouteProviders: any[] = [NotLoggedInGuard];
 
 export const registerRouting: ModuleWithProviders = RouterModule.forChild(registerRoutes);

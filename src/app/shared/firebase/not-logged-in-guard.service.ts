@@ -3,7 +3,7 @@ import { CanActivate, Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Rx';
 
-import { AuthService } from '../shared';
+import { AuthService } from './auth.service';
 
 /**
  * Only allows those who are NOT logged in to pass.
