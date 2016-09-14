@@ -11,6 +11,8 @@ export class SharingService {
     this._submission.next(submission);
   }
   public get submission(): Submission {
+    console.log(this._submission);
+
     return this._submission.value;
   }
   public get submissionObservable(): Observable<Submission> {

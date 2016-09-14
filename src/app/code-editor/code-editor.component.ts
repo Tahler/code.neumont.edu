@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterContentInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 
 import { CodeMirrorComponent } from './code-mirror';
 import { LanguageDropdownComponent } from './language-dropdown';
@@ -17,15 +17,21 @@ export class CodeEditorComponent implements OnInit {
 
   lang: Language;
 
-  submission: Submission;
+  @Input() submission: Submission;
   @Output() submissionChange = new EventEmitter();
 
   constructor(private templateService: SubmissionTemplateService) { }
 
   ngOnInit() {
+    console.log('code-editor found submission:', this.submission);
+
     if (this.submission) {
+      console.log('using');
+
       this.onSubmissionInit();
     } else {
+      console.log('creating');
+
       this.templateService
           .getDefaultSubmission()
           .take(1)
