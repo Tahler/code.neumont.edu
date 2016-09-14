@@ -15,16 +15,16 @@ System.config({
 
     'rxjs': 'npm:rxjs',
 
-    'jquery': 'vendor/jquery/dist/jquery.min.js',
-    'bootstrap': 'vendor/bootstrap/dist/js/bootstrap.min.js',
+    'jquery': 'npm:jquery/dist/jquery.min.js',
+    'bootstrap': 'npm:bootstrap/dist/js/bootstrap.min.js',
 
-    'firebase': 'vendor/firebase/firebase.js',
+    'firebase': 'npm:firebase/firebase.js',
     'angularfire2': 'vendor/angularfire2',
 
-    'moment': 'vendor/moment/moment.js',
+    'moment': 'npm:moment/moment.js',
     'ng2-bootstrap': 'vendor/ng2-bootstrap',
 
-    'showdown': 'vendor/showdown/dist/showdown.js',
+    'showdown': 'npm:showdown/dist/showdown.js',
     'codemirror': 'vendor/codemirror'
   },
   packages: {
