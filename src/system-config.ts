@@ -4,24 +4,22 @@ System.config({
   map: {
     'app': 'app',
 
-    '@angular/core': 'vendor/@angular/core/bundles/core.umd.js',
-    '@angular/common': 'vendor/@angular/common/bundles/common.umd.js',
-    '@angular/compiler': 'vendor/@angular/compiler/bundles/compiler.umd.js',
-    '@angular/platform-browser': 'vendor/@angular/platform-browser/bundles/platform-browser.umd.js',
-    '@angular/platform-browser-dynamic': 'vendor/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
-    '@angular/http': 'vendor/@angular/http/bundles/http.umd.js',
-    '@angular/router': 'vendor/@angular/router/bundles/router.umd.js',
-    '@angular/forms': 'vendor/@angular/forms/bundles/forms.umd.js',
+    '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
+    '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
+    '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
+    '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
+    '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+    '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
+    '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
+    '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
 
-    'rxjs': 'vendor/rxjs',
+    'rxjs': 'npm:rxjs',
 
     'jquery': 'vendor/jquery/dist/jquery.min.js',
     'bootstrap': 'vendor/bootstrap/dist/js/bootstrap.min.js',
 
     'firebase': 'vendor/firebase/firebase.js',
     'angularfire2': 'vendor/angularfire2',
-
-    'angular2-fontawesome': 'vendor/angular2-fontawesome',
 
     'moment': 'vendor/moment/moment.js',
     'ng2-bootstrap': 'vendor/ng2-bootstrap',
@@ -46,9 +44,6 @@ System.config({
     'ng2-bootstrap': {
       defaultExtension: 'js',
       main: 'ng2-bootstrap.js'
-    },
-    'angular2-fontawesome': {
-      defaultExtension: 'js'
     },
     'codemirror': {
       defaultExtension: 'js',
@@ -110,8 +105,8 @@ barrels.forEach((barrelName: string) => {
 });
 
 System.config({
-  map: {
-    '@angular': 'vendor/@angular'
+  paths: {
+    'npm:': 'https://unpkg.com/'
   },
   packages: cliSystemConfigPackages
 });
