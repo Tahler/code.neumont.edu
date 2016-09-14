@@ -10,7 +10,6 @@ import { ViewComponent } from './view';
 import { MySubmissionsComponent } from './my-submissions';
 import { LeaderboardComponent } from './leaderboard';
 import { RankingComponent } from './leaderboard/ranking';
-// TODO: remove in RC6 http://plnkr.co/edit/RDWTfM7NQ79bMBmJZyQC
 import { SharingService } from './shared';
 import { FormattingModule } from '../../shared';
 import { CodeEditorModule } from '../../code-editor';
@@ -35,7 +34,6 @@ import { SubmissionModule } from '../../submission-modal';
     LeaderboardComponent,
     RankingComponent
   ],
-  // TODO: remove in RC.6
   providers: [SharingService],
   exports: [ProblemComponent]
 })

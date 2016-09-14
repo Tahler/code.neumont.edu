@@ -10,9 +10,7 @@ import { SharingService } from './shared';
   moduleId: module.id,
   selector: 'app-problem',
   templateUrl: 'problem.component.html',
-  styleUrls: ['problem.component.css'],
-  // TODO: add in RC6
-  // providers: [SharingService]
+  styleUrls: ['problem.component.css']
 })
 export class ProblemComponent implements OnInit, OnDestroy {
   problemName: string;

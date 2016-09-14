@@ -6,9 +6,6 @@ import { Problem, Submission } from '../../../shared';
 
 @Injectable()
 export class SharingService {
-  // TODO: remove in RC6
-  constructor() { console.log('initting SharingService'); }
-
   private _submission = new BehaviorSubject<Submission>(null);
   public set submission(submission: Submission) {
     this._submission.next(submission);
