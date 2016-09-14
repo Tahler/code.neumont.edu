@@ -13,7 +13,7 @@ System.config({
     '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
     '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
 
-    'rxjs': 'npm:rxjs',
+    'rxjs': 'vendor/rxjs',
 
     'jquery': 'npm:jquery/dist/jquery.min.js',
     'bootstrap': 'npm:bootstrap/dist/js/bootstrap.min.js',
