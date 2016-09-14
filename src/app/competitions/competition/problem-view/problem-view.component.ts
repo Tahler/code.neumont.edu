@@ -4,7 +4,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs/Rx';
 
 import { SubmissionModalComponent } from '../../../submission-modal';
-import { CompetitionProblem, RepositoryService, Submission, User } from '../../../shared';
+import {
+  CompetitionProblem,
+  RepositoryService,
+  Submission,
+  SubmissionTemplateService,
+  User
+} from '../../../shared';
 
 @Component({
   moduleId: module.id,
@@ -26,9 +32,19 @@ export class ProblemViewComponent implements OnInit, OnDestroy {
   constructor(
       private router: Router,
       private route: ActivatedRoute,
-      private repoService: RepositoryService) { }
+      private repoService: RepositoryService,
+      private templateService: SubmissionTemplateService) { }
 
   ngOnInit() {
+    // Load in the template
+    this.templateService
+        .getDefaultSubmission()
+        .take(1)
+        .subscribe(defaultSubmission => {
+          this.submission.lang = defaultSubmission.lang;
+          this.submission.src = defaultSubmission.src;
+        });
+
     this.route.parent.params.subscribe(parentRouteParams => {
       let competitionId = parentRouteParams['id'];
       this.submission.competition = competitionId;
