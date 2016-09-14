@@ -11,7 +11,7 @@ import { MySubmissionsComponent } from './my-submissions';
 import { LeaderboardComponent } from './leaderboard';
 import { RankingComponent } from './leaderboard/ranking';
 import { SharingService } from './shared';
-import { FormattingModule } from '../../shared';
+import { FormattingModule, SubmissionTemplateModule } from '../../shared';
 import { CodeEditorModule } from '../../code-editor';
 import { SubmissionModule } from '../../submission-modal';
 
@@ -24,6 +24,7 @@ import { SubmissionModule } from '../../submission-modal';
 
     FormattingModule,
     CodeEditorModule,
+    SubmissionTemplateModule,
     SubmissionModule,
     problemRouting
   ],

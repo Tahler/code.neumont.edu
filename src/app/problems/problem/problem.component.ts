@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Subscription } from 'rxjs/Rx';
 
-import { RepositoryService, Submission } from '../../shared';
+import { RepositoryService, Submission, SubmissionTemplateService } from '../../shared';
 import { SharingService } from './shared';
 
 @Component({
@@ -19,6 +19,7 @@ export class ProblemComponent implements OnInit, OnDestroy {
   constructor(
       private route: ActivatedRoute,
       private repoService: RepositoryService,
+      private templateService: SubmissionTemplateService,
       private sharingService: SharingService) { }
 
   ngOnInit() {
@@ -30,6 +31,11 @@ export class ProblemComponent implements OnInit, OnDestroy {
           this.problemName = problem.name;
           this.sharingService.problem = problem;
         });
+    // Load in the template
+    this.templateService
+        .getDefaultSubmission()
+        .take(1)
+        .subscribe(defaultSubmission => this.sharingService.submission = defaultSubmission);
   }
 
   ngOnDestroy() {

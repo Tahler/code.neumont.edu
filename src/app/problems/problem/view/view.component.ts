@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Observable, Subscription } from 'rxjs/Rx';
@@ -21,8 +21,6 @@ export class ViewComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
-  @ViewChild('editor') editor: CodeEditorComponent;
-
   constructor(
       private router: Router,
       private repoService: RepositoryService,
@@ -41,25 +39,12 @@ export class ViewComponent implements OnInit, OnDestroy {
         });
     this.sharingService
         .submissionObservable
-        .subscribe(submission => {
-          console.log('got submission from sharing', submission);
-          // this.editor.submission = submission;
-          this.submission = submission;
-        });
+        .subscribe(submission => this.submission = submission);
   }
 
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
-    }
-  }
-
-  onSubmissionChange(newSubmission: Submission) {
-    if (this.submission != newSubmission) {
-      console.log('new submission');
-
-      // Note: Loops around via subscription
-      this.sharingService.submission = newSubmission;
     }
   }
 

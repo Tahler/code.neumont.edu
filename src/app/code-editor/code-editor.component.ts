@@ -1,71 +1,76 @@
-import { Component, OnInit, AfterContentInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, forwardRef, Output, ViewChild } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { CodeMirrorComponent } from './code-mirror';
-import { LanguageDropdownComponent } from './language-dropdown';
-import { SubmissionTemplateService } from './submission-template.service';
-import { Language, Submission } from '../shared';
+import { Language, supportedLanguages, Submission, SubmissionTemplateService } from '../shared';
+
+const noop = () => {};
+
+const inputControlValueAccessor: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => CodeEditorComponent),
+  multi: true
+};
 
 @Component({
   moduleId: module.id,
   selector: 'app-code-editor',
   templateUrl: 'code-editor.component.html',
-  styleUrls: ['code-editor.component.css']
+  styleUrls: ['code-editor.component.css'],
+  providers: [inputControlValueAccessor]
 })
-export class CodeEditorComponent implements OnInit {
-  @ViewChild('codeMirror') codeMirror: CodeMirrorComponent;
-  @ViewChild('langDropdown') langDropdown: LanguageDropdownComponent;
+export class CodeEditorComponent implements ControlValueAccessor {
+  submission: Submission;
 
-  lang: Language;
+  @ViewChild('editor') editor: CodeMirrorComponent;
 
-  @Input() submission: Submission;
-  @Output() submissionChange = new EventEmitter();
+  code: string;
+  language: Language;
 
   constructor(private templateService: SubmissionTemplateService) { }
 
-  ngOnInit() {
-    console.log('code-editor found submission:', this.submission);
-
-    if (this.submission) {
-      console.log('using');
-
-      this.onSubmissionInit();
-    } else {
-      console.log('creating');
-
-      this.templateService
-          .getDefaultSubmission()
-          .take(1)
-          .subscribe(submission => {
-            this.submission = submission;
-            this.onSubmissionInit();
-          });
+  // Called on language dropdown select
+  onLangChange(newLang: Language) {
+    this.submission.lang = newLang.apiCode;
+    if (this.editor) {
+      this.editor.mode = newLang.editorMode;
     }
-  }
-
-  onSubmissionInit() {
-    // Initial setup
-    this.codeMirror.src = this.submission.src;
-    this.langDropdown.lang = this.submission.lang;
-    this.submissionChange.emit(this.submission);
+    this.templateService
+        .getTemplate(newLang.apiCode)
+        .take(1)
+        .subscribe(template => this.code = template);
+    this.onChangeCallback(this.submission);
   }
 
   // Called on codemirror text change
   onSrcChange(src: string) {
     this.submission.src = src;
-    this.submissionChange.emit(this.submission);
+    this.onChangeCallback(this.submission);
   }
 
-  // Called on language dropdown select
-  onLangChange(newLang: Language) {
-    this.lang = newLang;
-    this.submission.lang = newLang.apiCode;
-    this.loadTemplate(newLang.apiCode);
+  writeValue(submission: Submission) {
+    if (submission) {
+      this.submission = submission;
+
+      this.code = this.submission.src;
+
+      let submissionLang = supportedLanguages.find(lang => lang.apiCode === this.submission.lang);
+      this.language = submissionLang;
+      if (this.editor) {
+        this.editor.mode = submissionLang.editorMode;
+      }
+    }
   }
 
-  loadTemplate(langCode: string) {
-    this.templateService
-        .getTemplate(langCode)
-        .take(1)
-        .subscribe(template => this.codeMirror.src = template);
+  // Registed by ngModel
+  private onTouchedCallback: () => void = noop;
+  private onChangeCallback: (_: any) => void = noop;
+
+  registerOnChange(fn: any) {
+    this.onChangeCallback = fn;
+  }
+
+  registerOnTouched(fn: any) {
+    this.onTouchedCallback = fn;
   }
 }

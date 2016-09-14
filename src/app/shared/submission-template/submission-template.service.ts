@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Rx';
 
-import { Submission } from '../shared';
+import { Submission } from '../models';
 
 const defaultTemplate = `Enter your code here.
 Read input from STDIN. Write output to STDOUT.`

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, ElementRef, EventEmitter, ViewChild } from '@angular/core';
+import { Component, ElementRef, forwardRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { fromTextArea, Editor, EditorConfiguration } from 'codemirror';
 
@@ -12,59 +13,73 @@ import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/python/python';
 import 'codemirror/mode/rust/rust';
 
+const noop = () => {};
+
+const inputControlValueAccessor: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => CodeMirrorComponent),
+  multi: true
+};
+
+const editorConfiguration: EditorConfiguration = {
+  autofocus: this.autofocus,
+  indentWithTabs: false,
+  tabSize: 2,
+  lineNumbers: true,
+  lineWrapping: true
+};
+
 @Component({
   moduleId: module.id,
   selector: 'app-code-mirror',
   templateUrl: 'code-mirror.component.html',
-  styleUrls: ['code-mirror.component.css']
+  styleUrls: [
+    // TODO: find out how this can be restricted here only
+    // '/vendor/codemirror/lib/codemirror.css',
+    'code-mirror.component.css'
+  ],
+  providers: [inputControlValueAccessor]
 })
-export class CodeMirrorComponent implements OnInit {
+export class CodeMirrorComponent implements OnInit, ControlValueAccessor {
   @ViewChild('textarea') textarea: ElementRef;
-  // The CodeMirror editor
   editor: Editor;
 
   @Input() autofocus: boolean = false;
 
-  private initialMode = '';
   @Input() set mode(mode: string) {
     if (this.editor) {
       this.editor.setOption('mode', mode);
-    } else {
-      this.initialMode = mode;
     }
   }
-
-  private initialSrc = '';
-  @Input() set src(src: string) {
-    let actualValue = src || '';
-    if (this.editor) {
-      this.editor.setValue(actualValue);
-      this.srcChange.emit(actualValue);
-    } else {
-      this.initialSrc = actualValue;
-    }
+  get mode(): string {
+    return this.editor
+        ? this.editor.getOption('mode')
+        : null;
   }
-  @Output() srcChange = new EventEmitter();
 
   ngOnInit() {
-    let config: EditorConfiguration = {
-      autofocus: this.autofocus,
-      indentWithTabs: false,
-      tabSize: 2,
-      lineNumbers: true,
-      lineWrapping: true
-    };
-
-    this.editor = fromTextArea(this.textarea.nativeElement, config);
-
-    this.editor.setOption('mode', this.initialMode);
-    this.initialMode = null;
-    this.editor.setValue(this.initialSrc);
-    this.initialSrc = null;
-
+    this.editor = fromTextArea(this.textarea.nativeElement, editorConfiguration);
     this.editor.on('change', editor => {
-      // User is typing...
-      this.srcChange.emit(editor.getValue());
+      this.onChangeCallback(editor.getValue());
+      this.onTouchedCallback();
     });
+  }
+
+  writeValue(value: string) {
+    if (this.editor) {
+      this.editor.setValue(value || '');
+    }
+  }
+
+  // Registered by ngModel
+  private onTouchedCallback: () => void = noop;
+  private onChangeCallback: (_: any) => void = noop;
+
+  registerOnChange(fn: any) {
+    this.onChangeCallback = fn;
+  }
+
+  registerOnTouched(fn: any) {
+    this.onTouchedCallback = fn;
   }
 }

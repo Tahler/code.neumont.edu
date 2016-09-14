@@ -1,10 +1,7 @@
 <div class="editor-area">
   <div class="header">
     <h3 class="title">Your Solution</h3>
-    <app-language-dropdown #langDropdown
-      (langChange)="onLangChange($event)"></app-language-dropdown>
+    <app-language-dropdown [ngModel]="language" (ngModelChange)="onLangChange($event)"></app-language-dropdown>
   </div>
-  <app-code-mirror #codeMirror
-    (srcChange)="onSrcChange($event)"
-    [mode]="lang.editorMode"></app-code-mirror>
+  <app-code-mirror [ngModel]="code" (ngModelChange)="onSrcChange($event)" #editor></app-code-mirror>
 </div>
