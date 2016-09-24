@@ -31,8 +31,6 @@ See more instructions on the Angular CLI on
 - [ ] Indication of email sent
 - [ ] Upgrade to RC.5
 - [ ] Stress test
-- [ ] Change feedback level impl
-  - Hints still optional property, with a "show errors?" bool
 - [ ] Checkmark next to completed problems
 - [ ] Spiff up profile page
   - [ ] Show placings in competitions
