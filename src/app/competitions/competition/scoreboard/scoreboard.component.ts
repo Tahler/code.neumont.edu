@@ -3,15 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Observable, Subscription } from 'rxjs/Rx';
 
-import {
-  Competition,
-  CompetitionScoreboardRanking,
-  RepositoryService,
-  TimeSpan
-} from '../../../shared';
+import { Competition, CompetitionScoreboardRanking } from '../../../shared/models/competition';
+import { RepositoryService } from '../../../shared/firebase/repository.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-scoreboard',
   templateUrl: 'scoreboard.component.html',
   styleUrls: ['scoreboard.component.css']

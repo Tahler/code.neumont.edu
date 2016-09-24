@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { Submission } from '../models';
 
 const defaultTemplate = `Enter your code here.
-Read input from STDIN. Write output to STDOUT.`
+Read input from STDIN. Write output to STDOUT.`;
 
 const templates = {
   'c': `#include <stdio.h>

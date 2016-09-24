@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { AuthService, LoginModalService, User } from '../../shared';
+import { AuthService } from '../../shared/firebase/auth.service';
+import { User } from '../../shared/models/user';
+import { LoginModalService } from '../../shared/login-modal.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-auth-area',
   templateUrl: 'auth-area.component.html',
   styleUrls: ['auth-area.component.css']

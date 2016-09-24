@@ -3,7 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { matchingPasswordValidator } from '../register/validators';
-import { AuthService, LoginModalService } from '../shared';
+import { AuthService } from '../shared/firebase/auth.service';
+import { LoginModalService } from '../shared/login-modal.service';
 
 /**
  * Handles
@@ -11,7 +12,6 @@ import { AuthService, LoginModalService } from '../shared';
  * - Email verification
  */
 @Component({
-  moduleId: module.id,
   selector: 'app-user-management',
   templateUrl: 'user-management.component.html',
   styleUrls: ['user-management.component.css']

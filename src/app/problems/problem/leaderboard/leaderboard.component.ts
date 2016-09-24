@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 import { SharingService } from '../shared';
-import { AuthService, RepositoryService, SuccessfulSubmission } from '../../../shared';
+import { AuthService } from '../../../shared/firebase/auth.service';
+import { RepositoryService } from '../../../shared/firebase/repository.service';
+import { SuccessfulSubmission } from '../../../shared/models/results';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-leaderboard',
   templateUrl: 'leaderboard.component.html',
   styleUrls: ['leaderboard.component.css']

@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { Problem } from '../../shared';
+import { Problem } from '../../shared/models/problem';
 
 @Pipe({
   name: 'contains'

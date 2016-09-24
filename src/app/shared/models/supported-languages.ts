@@ -1,19 +1,4 @@
-export interface Language {
-  /**
-   * The code to be sent to the Compilation API
-   */
-  apiCode: string;
-
-  /**
-   * The code used for Codemirror MIME styling (text/`cmCode`)
-   */
-  editorMode: string;
-
-  /**
-   * The name to be displayed in the language dropdown
-   */
-  name: string;
-}
+import { Language } from './language.ts';
 
 export const supportedLanguages: Language[] = [
   {
@@ -69,7 +54,7 @@ export const supportedLanguages: Language[] = [
 ];
 
 // A mapping between user-friendly display and the lang-id sent to the server for compilation.
-export const SupportedLanguagesByDisplay = {
+export const supportedLanguagesByDisplay = {
   'C': 'c',
   'C++': 'cpp',
   'C#': 'csharp',
@@ -83,11 +68,11 @@ export const SupportedLanguagesByDisplay = {
 };
 
 // Self-called function that produces the inverse of SupportedLanguagesByDisplay
-export const SupportedLanguagesByCode = (function () {
+export const supportedLanguagesByCode = (function () {
   let supportedLanguagesByCode = {};
-  for (let displayName in SupportedLanguagesByDisplay) {
-    if (SupportedLanguagesByDisplay.hasOwnProperty(displayName)) {
-      supportedLanguagesByCode[SupportedLanguagesByDisplay[displayName]] = displayName;
+  for (let displayName in supportedLanguagesByDisplay) {
+    if (supportedLanguagesByDisplay.hasOwnProperty(displayName)) {
+      supportedLanguagesByCode[supportedLanguagesByDisplay[displayName]] = displayName;
     }
   }
   return supportedLanguagesByCode;

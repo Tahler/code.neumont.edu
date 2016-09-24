@@ -5,10 +5,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ModalDirective } from 'ng2-bootstrap';
 
 import { emailValidator, matchingPasswordValidator } from './validators';
-import { AuthService, User } from '../shared';
+import { AuthService } from '../shared/firebase/auth.service';
+import { User } from '../shared/models/user';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-register',
   templateUrl: 'register.component.html',
   styleUrls: ['register.component.css']

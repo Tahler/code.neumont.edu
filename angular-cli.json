@@ -1,22 +1,36 @@
 {
   "project": {
-    "version": "1.0.0-beta.10",
-    "name": "capstone-web"
+    "version": "1.0.0-beta.15",
+    "name": "nu-code-web"
   },
   "apps": [
     {
-      "main": "src/main.ts",
-      "tsconfig": "src/tsconfig.json",
-      "mobile": false
+      "root": "src",
+      "outDir": "dist",
+      "assets": "assets",
+      "index": "index.html",
+      "main": "main.ts",
+      "tsconfig": "tsconfig.json",
+      "prefix": "app",
+      "mobile": false,
+      "styles": [
+        "styles.css"
+      ],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+      ],
+      "environments": {
+        "source": "environments/environment.ts",
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
     }
   ],
   "addons": [],
   "packages": [],
   "defaults": {
-    "prefix": "app",
-    "sourceDir": "src",
     "styleExt": "css",
-    "prefixInterfaces": false,
-    "lazyRoutePrefix": "+"
+    "prefixInterfaces": false
   }
 }

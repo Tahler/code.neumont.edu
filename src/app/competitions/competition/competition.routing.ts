@@ -5,12 +5,10 @@ import { CompetitionComponent } from './competition.component';
 import { WaitingComponent } from './waiting';
 import { ScoreboardComponent } from './scoreboard';
 import { ProblemViewComponent } from './problem-view';
-import {
-  CompetitionStartedGuard,
-  CompetitionNotStartedGuard,
-  LoggedInGuard,
-  VerifiedGuard
-} from '../../shared';
+import { CompetitionStartedGuard } from '../../shared/firebase/competition-started-guard.service';
+import { CompetitionNotStartedGuard } from '../../shared/firebase/competition-not-started-guard.service';
+import { LoggedInGuard } from '../../shared/firebase/logged-in-guard.service';
+import { VerifiedGuard } from '../../shared/firebase/verified-guard.service';
 
 const competitionRoutes: Routes = [
   {

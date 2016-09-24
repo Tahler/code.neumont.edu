@@ -1,8 +1,11 @@
-import { Component, forwardRef, Output, ViewChild } from '@angular/core';
+import { Component, forwardRef, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { CodeMirrorComponent } from './code-mirror';
-import { Language, supportedLanguages, Submission, SubmissionTemplateService } from '../shared';
+import { Language } from '../shared/models/language';
+import { supportedLanguages } from '../shared/models/supported-languages';
+import { Submission } from '../shared/models/submission';
+import { SubmissionTemplateService } from '../shared/submission-template/submission-template.service';
 
 const noop = () => {};
 
@@ -13,7 +16,6 @@ const inputControlValueAccessor: any = {
 };
 
 @Component({
-  moduleId: module.id,
   selector: 'app-code-editor',
   templateUrl: 'code-editor.component.html',
   styleUrls: ['code-editor.component.css'],

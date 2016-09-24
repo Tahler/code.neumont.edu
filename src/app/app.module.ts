@@ -7,7 +7,8 @@ import { routing, appRoutingProviders } from './app.routing';
 import { LoginModalModule } from './login-modal';
 import { NavbarModule } from './navbar';
 import { PageNotFoundModule } from './page-not-found';
-import { FirebaseModule, LoginModalService } from './shared';
+import { FirebaseModule } from './shared/firebase/firebase.module';
+import { LoginModalService } from './shared/login-modal.service';
 
 @NgModule({
   imports: [

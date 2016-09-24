@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { CollapseModule } from 'ng2-bootstrap';
 
-import { FormattingModule } from '../../shared';
+import { FormattingModule } from '../../shared/formatting/formatting.module';
 import { CodeEditorModule } from '../../code-editor';
 import { CountdownModule } from '../../countdown';
 import { SubmissionModule } from '../../submission-modal';

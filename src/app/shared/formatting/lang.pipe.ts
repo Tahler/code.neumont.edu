@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { SupportedLanguagesByCode } from '../';
+import { supportedLanguagesByCode } from '../models/supported-languages';
 
 @Pipe({
   name: 'lang'
 })
 export class LangPipe implements PipeTransform {
   transform(code: string): string {
-    return SupportedLanguagesByCode[code];
+    return supportedLanguagesByCode[code];
   }
 }

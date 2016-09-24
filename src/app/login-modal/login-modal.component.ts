@@ -4,10 +4,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 import { ModalDirective } from 'ng2-bootstrap';
 
-import { AuthService } from '../shared';
+import { AuthService } from '../shared/firebase/auth.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-login-modal',
   templateUrl: 'login-modal.component.html',
   styleUrls: ['login-modal.component.css']

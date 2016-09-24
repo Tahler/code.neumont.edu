@@ -1,9 +1,9 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { Problem, TestCase } from '../shared';
+import { Problem } from '../shared/models/problem';
+import { TestCase } from '../shared/models/test-case';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-edit-problem-form',
   templateUrl: 'edit-problem-form.component.html',
   styleUrls: ['edit-problem-form.component.css']

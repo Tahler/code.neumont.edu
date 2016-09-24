@@ -2,7 +2,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { CreateProblemComponent } from './create-problem.component';
-import { IsNeumonterGuard } from '../shared';
+import { IsNeumonterGuard } from '../shared/firebase/is-neumonter-guard.service';
 
 const createProblemRoutes: Routes = [
   {

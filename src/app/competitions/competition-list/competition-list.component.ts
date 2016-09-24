@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CompetitionPreviewComponent } from './competition-preview';
-import { AuthService, RepositoryService, Competition } from '../../shared';
+import { AuthService } from '../../shared/firebase/auth.service';
+import { RepositoryService } from '../../shared/firebase/repository.service';
+import { Competition } from '../../shared/models/competition';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-competition-list',
   templateUrl: 'competition-list.component.html',
   styleUrls: ['competition-list.component.css']

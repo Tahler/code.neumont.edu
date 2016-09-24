@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ProblemPreviewComponent } from './problem-preview';
-import { AuthService, Problem, RepositoryService } from '../../shared';
+import { AuthService } from '../../shared/firebase/auth.service';
+import { RepositoryService } from '../../shared/firebase/repository.service';
+import { Problem } from '../../shared/models/problem';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-problem-list',
   templateUrl: 'problem-list.component.html',
   styleUrls: ['problem-list.component.css']

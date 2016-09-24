@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 
-import { AuthService } from '../shared';
+import { AuthService } from '../shared/firebase/auth.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-verification-required',
   templateUrl: 'verification-required.component.html',
   styleUrls: ['verification-required.component.css']

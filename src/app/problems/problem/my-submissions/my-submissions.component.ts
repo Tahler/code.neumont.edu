@@ -2,11 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Subscription } from 'rxjs/Rx';
 
-import { AuthService, LoginModalService, MySubmission, RepositoryService } from '../../../shared';
 import { SharingService } from '../shared';
+import { LoginModalService } from '../../../shared/login-modal.service';
+import { AuthService } from '../../../shared/firebase/auth.service';
+import { RepositoryService } from '../../../shared/firebase/repository.service';
+import { MySubmission } from '../../../shared/models/results';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-my-submissions',
   templateUrl: 'my-submissions.component.html',
   styleUrls: ['my-submissions.component.css']

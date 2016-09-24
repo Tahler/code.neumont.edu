@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Subscription } from 'rxjs/Rx';
 
-import { RepositoryService, Submission, SubmissionTemplateService } from '../../shared';
+import { RepositoryService } from '../../shared/firebase/repository.service';
+import { SubmissionTemplateService } from '../../shared/submission-template/submission-template.service';
 import { SharingService } from './shared';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-problem',
   templateUrl: 'problem.component.html',
   styleUrls: ['problem.component.css']

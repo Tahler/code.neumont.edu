@@ -4,10 +4,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import * as moment from 'moment';
 
-import { Competition, RepositoryService } from '../../../shared';
+import { Competition } from '../../../shared/models/competition';
+import { RepositoryService } from '../../../shared/firebase/repository.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-waiting',
   templateUrl: 'waiting.component.html',
   styleUrls: ['waiting.component.css']

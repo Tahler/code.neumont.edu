@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { RepositoryService, CompetitionScoreboardRanking } from '../../../shared';
+import { RepositoryService } from '../../../shared/firebase/repository.service';
+import { CompetitionScoreboardRanking } from '../../../shared/models/competition';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-scoreboard-preview',
   templateUrl: 'scoreboard-preview.component.html',
   styleUrls: ['scoreboard-preview.component.css']

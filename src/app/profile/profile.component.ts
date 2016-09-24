@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AuthService, RepositoryService, User } from '../shared';
+import { AuthService } from '../shared/firebase/auth.service';
+import { RepositoryService } from '../shared/firebase/repository.service';
+import { User } from '../shared/models/user';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-profile',
   templateUrl: 'profile.component.html',
   styleUrls: ['profile.component.css']

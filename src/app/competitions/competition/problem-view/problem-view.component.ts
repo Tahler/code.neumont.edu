@@ -1,19 +1,13 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Observable, Subscription } from 'rxjs/Rx';
 
-import { SubmissionModalComponent } from '../../../submission-modal';
-import {
-  CompetitionProblem,
-  RepositoryService,
-  Submission,
-  SubmissionTemplateService,
-  User
-} from '../../../shared';
+import { CompetitionProblem } from '../../../shared/models/competition';
+import { RepositoryService } from '../../../shared/firebase/repository.service';
+import { SubmissionTemplateService } from '../../../shared/submission-template/submission-template.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-problem-view',
   templateUrl: 'problem-view.component.html',
   styleUrls: ['problem-view.component.css']

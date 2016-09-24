@@ -6,8 +6,8 @@ import { Observable } from 'rxjs/Rx';
 import * as firebase from 'firebase';
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 
-import { User } from '../';
 import { RepositoryService } from './repository.service';
+import { User } from '../models/user';
 
 const newlyVerifiedUrl = 'http://code.neumont.edu/verified';
 const requestHeaders = new Headers({ 'Content-Type': 'application/json' });
@@ -65,9 +65,11 @@ export class AuthService {
         : Observable.of(null));
   }
 
-  get token(): Observable<string> {
-    return this.auth.flatMap<string>(auth => {
-      let promise: Promise<string> = auth ? auth.getToken(true) : Promise.resolve(null);
+  get token(): Observable<any> {
+    return this.auth.flatMap<any>(auth => {
+      let promise: Promise<any> = auth
+          ? new Promise(resolve => auth.getToken(true).then(token => resolve(token)))
+          : Promise.resolve(null);
       return Observable.fromPromise(promise);
     });
   }
@@ -91,14 +93,14 @@ export class AuthService {
             // If creation succeeded, create the user in the database
             let uid = authState.uid;
             // Create the profile picture if provided
-            let storePicture = new Promise(resolve => {
+            let storePicture = new Promise(resolvePicture => {
               if (picture) {
                 this.repoService.storeImage(`profile-pictures/${uid}`, picture).then(url => {
                   user.imgUrl = url;
-                  resolve();
+                  resolvePicture();
                 });
               } else {
-                resolve();
+                resolvePicture();
               }
             });
             storePicture.then(() => {
@@ -118,15 +120,18 @@ export class AuthService {
   }
 
   verifyEmail(oobCode: string): Promise<void> {
-    return firebase.auth().applyActionCode(oobCode).then(
-      () => Promise.all([
-              this.notifyNewlyVerified(),
-              firebase.auth().currentUser.reload()
-            ]),
-      err => {
-        console.error(err);
-        return Promise.reject(err);
-      });
+    return new Promise<void>((resolve, reject) =>
+        firebase.auth()
+            .applyActionCode(oobCode)
+            .then(
+                () => Promise.all([
+                        this.notifyNewlyVerified(),
+                        firebase.auth().currentUser.reload()
+                      ]).then(() => resolve()),
+                err => {
+                  console.error(err);
+                  return reject(err);
+                }));
   }
 
   private notifyNewlyVerified(): Promise<void> {
@@ -139,29 +144,41 @@ export class AuthService {
   }
 
   sendPasswordResetEmail(email: string): Promise<void> {
-    return firebase.auth().sendPasswordResetEmail(email);
+    return new Promise<void>(resolve =>
+        firebase.auth()
+            .sendPasswordResetEmail(email)
+            .then(_ => resolve()));
   }
 
   /**
    * Resolves with the email associated with `oobCode`.
    */
   verifyPasswordResetCode(oobCode: string): Promise<string> {
-    return firebase.auth().verifyPasswordResetCode(oobCode);
+    return new Promise<string>(resolve =>
+        firebase.auth()
+            .verifyPasswordResetCode(oobCode)
+            .then(_ => resolve(_ as string)));
   }
 
   confirmPasswordReset(oobCode: string, newPassword: string): Promise<void> {
-    return firebase.auth().confirmPasswordReset(oobCode, newPassword);;
+    return new Promise<void>(resolve =>
+        firebase.auth()
+            .confirmPasswordReset(oobCode, newPassword)
+            .then(_ => resolve()));
   }
 
   logInWithEmailPassword(email: string, password: string): Promise<void> {
-    return this.af.auth.login({ email, password }, emailPasswordConfig);
+    return new Promise<void>(resolve =>
+        this.af.auth
+            .login({ email, password }, emailPasswordConfig)
+            .then(_ => resolve()));
   }
 
-  logInWithFacebook(): void { }
+  logInWithFacebook() { }
 
-  logInWithGoogle(): void { }
+  logInWithGoogle() { }
 
-  logInWithGithub(): void { }
+  logInWithGithub() { }
 
   logOut(): void {
     this.af.auth.logout();

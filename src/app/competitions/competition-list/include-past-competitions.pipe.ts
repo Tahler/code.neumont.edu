@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Competition } from '../../shared';
+
+import { Competition } from '../../shared/models/competition';
 
 @Pipe({
   name: 'includePast'

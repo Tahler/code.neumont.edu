@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { NavbarComponent } from './navbar.component';
 import { AuthAreaComponent } from './auth-area/auth-area.component';
-import { FirebaseModule } from '../shared';
+import { FirebaseModule } from '../shared/firebase/firebase.module';
 
 @NgModule({
   imports: [

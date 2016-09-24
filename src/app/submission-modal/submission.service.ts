@@ -3,7 +3,8 @@ import { Http, Headers } from '@angular/http';
 
 import { Observable } from 'rxjs/Rx';
 
-import { Result, Submission } from '../shared';
+import { Result } from '../shared/models/results';
+import { Submission } from '../shared/models/submission';
 
 const url = 'http://code.neumont.edu/submit';
 const requestHeaders = new Headers({ 'Content-Type': 'application/json' });

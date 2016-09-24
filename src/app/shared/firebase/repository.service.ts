@@ -7,7 +7,6 @@ import { AngularFire } from 'angularfire2';
 import {
   Competition,
   CompetitionProblem,
-  CompetitionScoreboard,
   CompetitionScoreboardRanking,
   MySubmission,
   Problem,

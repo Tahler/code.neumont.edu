@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SuccessfulSubmission, RepositoryService, User } from '../../../../shared';
+
+import { RepositoryService } from '../../../../shared/firebase/repository.service';
+import { SuccessfulSubmission } from '../../../../shared/models/results';
+import { User } from '../../../../shared/models/user';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-ranking',
   templateUrl: 'ranking.component.html',
   styleUrls: ['ranking.component.css']

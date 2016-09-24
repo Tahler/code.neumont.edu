@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 
-import { AuthService } from '../shared';
+import { AuthService } from '../shared/firebase/auth.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-reset-password',
   templateUrl: 'reset-password.component.html',
   styleUrls: ['reset-password.component.css']

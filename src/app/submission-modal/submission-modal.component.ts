@@ -3,14 +3,15 @@ import { Component, Input, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/Rx';
 import { ModalDirective, ModalOptions } from 'ng2-bootstrap';
 
-import { AuthService, Result, Submission } from '../shared';
 import { SubmissionService } from './submission.service';
+import { AuthService } from '../shared/firebase/auth.service';
+import { Result } from '../shared/models/results';
+import { Submission } from '../shared/models/submission';
 
-const configPreventCloseOnClickOutside: ModalOptions = {  }; // backdrop: 'static'
+const configPreventCloseOnClickOutside: ModalOptions = { backdrop: 'static' };
 const configAllowCloseOnClickOutside: ModalOptions = {};
 
 @Component({
-  moduleId: module.id,
   selector: 'app-submission-modal',
   templateUrl: 'submission-modal.component.html',
   styleUrls: ['submission-modal.component.css']
@@ -58,8 +59,6 @@ export class SubmissionModalComponent implements OnDestroy {
             this.modal.config = configAllowCloseOnClickOutside;
             this.killSubscription();
           });
-          console.log('before');
-
       this.modal.show();
     });
   }

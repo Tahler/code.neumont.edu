@@ -6,7 +6,7 @@ import { CodeEditorComponent } from './code-editor.component';
 import { CodeMirrorComponent } from './code-mirror';
 import { LanguageDropdownComponent } from './language-dropdown';
 
-import { SubmissionTemplateModule } from '../shared';
+import { SubmissionTemplateModule } from '../shared/submission-template/submission-template.module';
 
 @NgModule({
   imports: [

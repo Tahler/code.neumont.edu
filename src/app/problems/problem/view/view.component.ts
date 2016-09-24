@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 
 import { Observable, Subscription } from 'rxjs/Rx';
 
-import { CodeEditorComponent } from '../../../code-editor';
-import { SubmissionModalComponent } from '../../../submission-modal';
-import { AuthService, Problem, RepositoryService, Submission, User } from '../../../shared';
 import { SharingService } from '../shared';
+import { AuthService } from '../../../shared/firebase/auth.service';
+import { RepositoryService } from '../../../shared/firebase/repository.service';
+import { Problem } from '../../../shared/models/problem';
+import { Submission } from '../../../shared/models/submission';
+import { User } from '../../../shared/models/user';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-view',
   templateUrl: 'view.component.html',
   styleUrls: ['view.component.css']

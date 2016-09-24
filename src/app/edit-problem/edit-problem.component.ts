@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { AuthService, Problem, RepositoryService, TestCase, } from '../shared';
+import { AuthService } from '../shared/firebase/auth.service';
+import { RepositoryService } from '../shared/firebase/repository.service';
+import { Problem } from '../shared/models/problem';
+import { TestCase } from '../shared/models/test-case';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-edit-problem',
   templateUrl: 'edit-problem.component.html',
   styleUrls: ['edit-problem.component.css']

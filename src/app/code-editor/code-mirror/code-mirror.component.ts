@@ -3,8 +3,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { fromTextArea, Editor, EditorConfiguration } from 'codemirror';
 
-import { Language } from '../../shared';
-
 // TODO: lazy load
 import 'codemirror/addon/mode/simple';
 import 'codemirror/mode/clike/clike';
@@ -30,7 +28,6 @@ const editorConfiguration: EditorConfiguration = {
 };
 
 @Component({
-  moduleId: module.id,
   selector: 'app-code-mirror',
   templateUrl: 'code-mirror.component.html',
   styleUrls: [

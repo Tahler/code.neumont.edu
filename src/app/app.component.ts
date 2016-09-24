@@ -1,13 +1,11 @@
-import 'jquery';
-import 'bootstrap';
-
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 
 import { LoginModalComponent } from './login-modal';
-import { AuthService, LoginModalService, RepositoryService } from './shared';
+import { AuthService } from './shared/firebase/auth.service';
+import { RepositoryService } from './shared/firebase/repository.service';
+import { LoginModalService } from './shared/login-modal.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css']

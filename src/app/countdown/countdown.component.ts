@@ -2,10 +2,9 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs/Rx';
 
-import { TimeSpan } from '../shared';
+import { TimeSpan } from '../shared/models/time-span';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-countdown',
   templateUrl: 'countdown.component.html',
   styleUrls: ['countdown.component.css']

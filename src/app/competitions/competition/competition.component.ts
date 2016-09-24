@@ -3,18 +3,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { Observable, Subscription } from 'rxjs/Rx';
 
-import { ProblemPreviewComponent } from './problem-preview';
-import { ScoreboardPreviewComponent } from './scoreboard-preview';
-import {
-  AuthService,
-  Competition,
-  CompetitionProblem,
-  CompetitionScoreboardRanking,
-  RepositoryService
-} from '../../shared';
+import { AuthService } from '../../shared/firebase/auth.service';
+import { Competition, CompetitionProblem } from '../../shared/models/competition';
+import { RepositoryService } from '../../shared/firebase/repository.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-competition',
   templateUrl: 'competition.component.html',
   styleUrls: ['competition.component.css']

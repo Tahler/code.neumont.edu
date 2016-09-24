@@ -1,9 +1,8 @@
 import { Component, Input } from '@angular/core';
 
-import { Problem } from '../../../shared';
+import { Problem } from '../../../shared/models/problem';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-problem-preview',
   templateUrl: 'problem-preview.component.html',
   styleUrls: ['problem-preview.component.css']

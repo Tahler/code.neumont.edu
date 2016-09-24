@@ -2,5 +2,7 @@
 // https://github.com/typings/typings
 // https://www.typescriptlang.org/docs/handbook/writing-declaration-files.html
 
-/// <reference path="../typings/index.d.ts" />
-declare var module: { id: string };
+declare var System: any;
+
+// TODO: This is a workaround for angularfire2. Remove when fixed.
+declare var require: any;

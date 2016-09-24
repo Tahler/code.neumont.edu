@@ -6,7 +6,8 @@
 import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { supportedLanguages, Language } from '../../shared';
+import { Language } from '../../shared/models/language';
+import { supportedLanguages } from '../../shared/models/supported-languages';
 
 const noop = () => {};
 
@@ -17,7 +18,6 @@ const inputControlValueAccessor: any = {
 };
 
 @Component({
-  moduleId: module.id,
   selector: 'app-language-dropdown',
   templateUrl: 'language-dropdown.component.html',
   styleUrls: ['language-dropdown.component.css'],

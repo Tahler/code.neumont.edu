@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { Observable, BehaviorSubject } from 'rxjs/Rx';
 
-import { Problem, Submission } from '../../../shared';
+import { Problem } from '../../../shared/models/problem';
+import { Submission } from '../../../shared/models/submission';
 
 @Injectable()
 export class SharingService {

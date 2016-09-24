@@ -2,7 +2,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { EditProblemComponent } from './edit-problem.component';
-import { CanEditProblemGuard } from '../shared';
+import { CanEditProblemGuard } from '../shared/firebase/can-edit-problem-guard.service';
 
 const editProblemRoutes: Routes = [
   {

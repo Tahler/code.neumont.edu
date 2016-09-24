@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs/Rx';
 import * as moment from 'moment';
 
-import { Competition, TimeSpan } from '../../../shared';
+import { Competition } from '../../../shared/models/competition';
+import { TimeSpan } from '../../../shared/models/time-span';
 
 // The time in milliseconds before a competition is considered to start soon
 // 6 hours = 21600000
@@ -15,7 +16,6 @@ const hardEndThreshold = 600000;
 const oneDayInMilliseconds = 86400000;
 
 @Component({
-  moduleId: module.id,
   selector: 'app-competition-preview',
   templateUrl: 'competition-preview.component.html',
   styleUrls: ['competition-preview.component.css']
