@@ -1,4 +1,4 @@
-import { Language } from './language.ts';
+import { Language } from './language';
 
 export const supportedLanguages: Language[] = [
   {
