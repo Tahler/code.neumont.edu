@@ -8,8 +8,8 @@ import { AuthService } from '../shared/firebase/auth.service';
 
 @Component({
   selector: 'app-login-modal',
-  templateUrl: 'login-modal.component.html',
-  styleUrls: ['login-modal.component.css']
+  templateUrl: './login-modal.component.html',
+  styleUrls: ['./login-modal.component.css']
 })
 export class LoginModalComponent implements OnInit {
   @ViewChild('modal') modal: ModalDirective;

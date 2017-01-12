@@ -10,8 +10,8 @@ import { MySubmission } from '../../../shared/models/results';
 
 @Component({
   selector: 'app-my-submissions',
-  templateUrl: 'my-submissions.component.html',
-  styleUrls: ['my-submissions.component.css']
+  templateUrl: './my-submissions.component.html',
+  styleUrls: ['./my-submissions.component.css']
 })
 export class MySubmissionsComponent implements OnInit, OnDestroy {
   mySubmissions: MySubmission[];

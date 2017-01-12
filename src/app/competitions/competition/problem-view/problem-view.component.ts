@@ -9,8 +9,8 @@ import { SubmissionTemplateService } from '../../../shared/submission-template/s
 
 @Component({
   selector: 'app-problem-view',
-  templateUrl: 'problem-view.component.html',
-  styleUrls: ['problem-view.component.css']
+  templateUrl: './problem-view.component.html',
+  styleUrls: ['./problem-view.component.css']
 })
 export class ProblemViewComponent implements OnInit, OnDestroy {
   problem: CompetitionProblem;

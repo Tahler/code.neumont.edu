@@ -13,8 +13,8 @@ const configAllowCloseOnClickOutside: ModalOptions = {};
 
 @Component({
   selector: 'app-submission-modal',
-  templateUrl: 'submission-modal.component.html',
-  styleUrls: ['submission-modal.component.css']
+  templateUrl: './submission-modal.component.html',
+  styleUrls: ['./submission-modal.component.css']
 })
 export class SubmissionModalComponent implements OnDestroy {
   @Input() problemId: string;

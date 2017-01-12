@@ -6,8 +6,8 @@ import { TimeSpan } from '../shared/models/time-span';
 
 @Component({
   selector: 'app-countdown',
-  templateUrl: 'countdown.component.html',
-  styleUrls: ['countdown.component.css']
+  templateUrl: './countdown.component.html',
+  styleUrls: ['./countdown.component.css']
 })
 export class CountdownComponent implements OnInit, OnDestroy {
   @Input() date: Date;

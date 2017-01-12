@@ -8,8 +8,8 @@ import { RepositoryService } from '../../../shared/firebase/repository.service';
 
 @Component({
   selector: 'app-scoreboard',
-  templateUrl: 'scoreboard.component.html',
-  styleUrls: ['scoreboard.component.css']
+  templateUrl: './scoreboard.component.html',
+  styleUrls: ['./scoreboard.component.css']
 })
 export class ScoreboardComponent implements OnInit, OnDestroy {
   ended: boolean;

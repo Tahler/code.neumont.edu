@@ -6,8 +6,8 @@ import { LoginModalService } from '../../shared/login-modal.service';
 
 @Component({
   selector: 'app-auth-area',
-  templateUrl: 'auth-area.component.html',
-  styleUrls: ['auth-area.component.css']
+  templateUrl: './auth-area.component.html',
+  styleUrls: ['./auth-area.component.css']
 })
 export class AuthAreaComponent implements OnInit {
   user: User;

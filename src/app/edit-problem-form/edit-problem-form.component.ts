@@ -5,8 +5,8 @@ import { TestCase } from '../shared/models/test-case';
 
 @Component({
   selector: 'app-edit-problem-form',
-  templateUrl: 'edit-problem-form.component.html',
-  styleUrls: ['edit-problem-form.component.css']
+  templateUrl: './edit-problem-form.component.html',
+  styleUrls: ['./edit-problem-form.component.css']
 })
 export class EditProblemFormComponent {
   @Input() problem: Problem;

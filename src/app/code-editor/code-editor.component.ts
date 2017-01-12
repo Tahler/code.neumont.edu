@@ -17,8 +17,8 @@ const inputControlValueAccessor: any = {
 
 @Component({
   selector: 'app-code-editor',
-  templateUrl: 'code-editor.component.html',
-  styleUrls: ['code-editor.component.css'],
+  templateUrl: './code-editor.component.html',
+  styleUrls: ['./code-editor.component.css'],
   providers: [inputControlValueAccessor]
 })
 export class CodeEditorComponent implements ControlValueAccessor {

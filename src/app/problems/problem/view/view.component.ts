@@ -12,8 +12,8 @@ import { User } from '../../../shared/models/user';
 
 @Component({
   selector: 'app-view',
-  templateUrl: 'view.component.html',
-  styleUrls: ['view.component.css']
+  templateUrl: './view.component.html',
+  styleUrls: ['./view.component.css']
 })
 export class ViewComponent implements OnInit, OnDestroy {
   problem: Problem;

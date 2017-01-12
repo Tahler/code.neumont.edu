@@ -9,8 +9,8 @@ import { RepositoryService } from '../../shared/firebase/repository.service';
 
 @Component({
   selector: 'app-competition',
-  templateUrl: 'competition.component.html',
-  styleUrls: ['competition.component.css']
+  templateUrl: './competition.component.html',
+  styleUrls: ['./competition.component.css']
 })
 export class CompetitionComponent implements OnInit, OnDestroy {
   collapsed = false;

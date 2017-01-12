@@ -8,8 +8,8 @@ import { TestCase } from '../shared/models/test-case';
 
 @Component({
   selector: 'app-edit-problem',
-  templateUrl: 'edit-problem.component.html',
-  styleUrls: ['edit-problem.component.css']
+  templateUrl: './edit-problem.component.html',
+  styleUrls: ['./edit-problem.component.css']
 })
 export class EditProblemComponent implements OnInit {
   problem: Problem;

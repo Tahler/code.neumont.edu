@@ -9,8 +9,8 @@ import { SharingService } from './shared';
 
 @Component({
   selector: 'app-problem',
-  templateUrl: 'problem.component.html',
-  styleUrls: ['problem.component.css']
+  templateUrl: './problem.component.html',
+  styleUrls: ['./problem.component.css']
 })
 export class ProblemComponent implements OnInit, OnDestroy {
   problemName: string;

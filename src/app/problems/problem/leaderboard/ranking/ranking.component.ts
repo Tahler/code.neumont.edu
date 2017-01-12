@@ -6,8 +6,8 @@ import { User } from '../../../../shared/models/user';
 
 @Component({
   selector: 'app-ranking',
-  templateUrl: 'ranking.component.html',
-  styleUrls: ['ranking.component.css']
+  templateUrl: './ranking.component.html',
+  styleUrls: ['./ranking.component.css']
 })
 export class RankingComponent implements OnInit {
   @Input() rank: number;

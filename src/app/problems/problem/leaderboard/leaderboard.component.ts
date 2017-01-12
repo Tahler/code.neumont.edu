@@ -7,8 +7,8 @@ import { SuccessfulSubmission } from '../../../shared/models/results';
 
 @Component({
   selector: 'app-leaderboard',
-  templateUrl: 'leaderboard.component.html',
-  styleUrls: ['leaderboard.component.css']
+  templateUrl: './leaderboard.component.html',
+  styleUrls: ['./leaderboard.component.css']
 })
 export class LeaderboardComponent implements OnInit {
   topSubmissions: SuccessfulSubmission[];

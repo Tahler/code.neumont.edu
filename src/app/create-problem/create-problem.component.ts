@@ -8,8 +8,8 @@ import { TestCase } from '../shared/models/test-case';
 
 @Component({
   selector: 'app-create-problem',
-  templateUrl: 'create-problem.component.html',
-  styleUrls: ['create-problem.component.css']
+  templateUrl: './create-problem.component.html',
+  styleUrls: ['./create-problem.component.css']
 })
 export class CreateProblemComponent implements OnInit {
   problem = new Problem();

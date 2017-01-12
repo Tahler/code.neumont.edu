@@ -19,8 +19,8 @@ const inputControlValueAccessor: any = {
 
 @Component({
   selector: 'app-language-dropdown',
-  templateUrl: 'language-dropdown.component.html',
-  styleUrls: ['language-dropdown.component.css'],
+  templateUrl: './language-dropdown.component.html',
+  styleUrls: ['./language-dropdown.component.css'],
   providers: [inputControlValueAccessor]
 })
 export class LanguageDropdownComponent implements ControlValueAccessor {

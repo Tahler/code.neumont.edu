@@ -10,8 +10,8 @@ import { User } from '../shared/models/user';
 
 @Component({
   selector: 'app-register',
-  templateUrl: 'register.component.html',
-  styleUrls: ['register.component.css']
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
   nameControl = new FormControl('', Validators.required);

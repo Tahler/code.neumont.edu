@@ -17,8 +17,8 @@ const oneDayInMilliseconds = 86400000;
 
 @Component({
   selector: 'app-competition-preview',
-  templateUrl: 'competition-preview.component.html',
-  styleUrls: ['competition-preview.component.css']
+  templateUrl: './competition-preview.component.html',
+  styleUrls: ['./competition-preview.component.css']
 })
 export class CompetitionPreviewComponent implements OnInit, OnDestroy {
   @Input() competition: Competition;

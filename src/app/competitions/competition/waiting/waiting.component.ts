@@ -9,8 +9,8 @@ import { RepositoryService } from '../../../shared/firebase/repository.service';
 
 @Component({
   selector: 'app-waiting',
-  templateUrl: 'waiting.component.html',
-  styleUrls: ['waiting.component.css']
+  templateUrl: './waiting.component.html',
+  styleUrls: ['./waiting.component.css']
 })
 export class WaitingComponent implements OnInit {
   competition: Competition;

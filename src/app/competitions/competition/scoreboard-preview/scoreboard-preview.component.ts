@@ -5,8 +5,8 @@ import { CompetitionScoreboardRanking } from '../../../shared/models/competition
 
 @Component({
   selector: 'app-scoreboard-preview',
-  templateUrl: 'scoreboard-preview.component.html',
-  styleUrls: ['scoreboard-preview.component.css']
+  templateUrl: './scoreboard-preview.component.html',
+  styleUrls: ['./scoreboard-preview.component.css']
 })
 export class ScoreboardPreviewComponent implements OnInit {
   @Input() competitionId: string;

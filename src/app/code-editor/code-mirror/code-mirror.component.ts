@@ -29,11 +29,11 @@ const editorConfiguration: EditorConfiguration = {
 
 @Component({
   selector: 'app-code-mirror',
-  templateUrl: 'code-mirror.component.html',
+  templateUrl: './code-mirror.component.html',
   styleUrls: [
     // TODO: find out how this can be restricted here only
     // '/vendor/codemirror/lib/codemirror.css',
-    'code-mirror.component.css'
+    './code-mirror.component.css'
   ],
   providers: [inputControlValueAccessor]
 })
