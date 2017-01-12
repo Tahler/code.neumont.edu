@@ -13,7 +13,7 @@ import { LoginModalComponent } from './login-modal.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    ModalModule
+    ModalModule.forRoot()
   ],
   declarations: [LoginModalComponent],
   exports: [LoginModalComponent]

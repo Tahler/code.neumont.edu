@@ -24,7 +24,7 @@
     "core-js": "^2.4.1",
     "firebase": "^3.4.0",
     "jquery": "^3.1.0",
-    "ng2-bootstrap": "^1.1.5",
+    "ng2-bootstrap": "^1.1.17",
     "rxjs": "^5.0.1",
     "showdown": "^1.4.2",
     "systemjs": "^0.19.27",
