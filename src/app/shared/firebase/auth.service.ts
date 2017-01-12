@@ -60,13 +60,13 @@ export class AuthService {
   }
 
   get user(): Observable<User> {
-    return this.auth.flatMap<User>(auth => auth
+    return this.auth.flatMap(auth => auth
         ? this.repoService.getUser(auth.uid)
         : Observable.of(null));
   }
 
   get token(): Observable<any> {
-    return this.auth.flatMap<any>(auth => {
+    return this.auth.flatMap(auth => {
       let promise: Promise<any> = auth
           ? new Promise(resolve => auth.getToken(true).then(token => resolve(token)))
           : Promise.resolve(null);

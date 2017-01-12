@@ -120,7 +120,7 @@ export class SubmissionTemplateService {
 
   getDefaultSubmission(): Observable<Submission> {
     return this.getPreferredLanguage()
-      .flatMap<Submission>(preferredLanguage =>
+      .flatMap(preferredLanguage =>
         this.getTemplate(preferredLanguage)
           .map(template => ({
             lang: preferredLanguage,

@@ -90,7 +90,7 @@ export class RepositoryService {
 
   hasSolvedCompetitionProblem(competitionId: string, problemId: string): Observable<boolean> {
     return this.af.auth
-        .flatMap<boolean>(auth => this.af.database
+        .flatMap(auth => this.af.database
             .object(``
                 + `/competitionScoreboards/${competitionId}`
                 + `/${auth.uid}/problems/${problemId}/solutionSubmittedAfter`)
@@ -122,9 +122,9 @@ export class RepositoryService {
                   return ranking;
                 }))
         // Get the user data per uid
-        .flatMap<CompetitionScoreboardRanking[]>(rankingsSnapshot =>
+        .flatMap(rankingsSnapshot =>
             // Combine each Observable<T>[] to Observable<T[]>
-            Observable.forkJoin<CompetitionScoreboardRanking[]>(
+            Observable.forkJoin(
                 // Map any[] to Observable<CompetitionScoreboardRanking>[]
                 rankingsSnapshot
                     .map(ranking =>
