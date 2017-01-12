@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  submission_url: 'http://code.neumont.edu/submit'
 };

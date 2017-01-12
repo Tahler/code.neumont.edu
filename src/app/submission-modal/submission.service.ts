@@ -6,7 +6,9 @@ import { Observable } from 'rxjs/Rx';
 import { Result } from '../shared/models/results';
 import { Submission } from '../shared/models/submission';
 
-const url = 'http://code.neumont.edu/submit';
+import { environment } from '../../environments/environment';
+
+const url = environment.submission_url;
 const requestHeaders = new Headers({ 'Content-Type': 'application/json' });
 
 @Injectable()
