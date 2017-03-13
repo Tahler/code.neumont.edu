@@ -32,12 +32,12 @@
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
+    "@angular/cli": "^1.0.0-rc.1",
     "@angular/compiler-cli": "^2.3.1",
     "@types/codemirror": "0.0.33",
     "@types/node": "^6.0.42",
     "@types/request": "0.0.30",
     "@types/showdown": "^1.4.31",
-    "angular-cli": "1.0.0-beta.24",
     "codelyzer": "~2.0.0-beta.1",
     "ts-node": "1.2.1",
     "tslint": "^4.0.2",
